@@ -15,6 +15,7 @@ const test = computed(()=>store.state.test)
     <router-link to="home">Home |</router-link>
     <router-link to="request_password">Request password |</router-link>
     <router-link to="reset_password">Reset password |</router-link>
+    <router-link to="app">App|</router-link>
     <router-view></router-view>
   </div>
 

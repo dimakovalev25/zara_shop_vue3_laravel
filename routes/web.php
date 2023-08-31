@@ -3,6 +3,6 @@
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/', function () {
-    return 'welcome';
-});
+Auth::routes();
+
+Route::get('{page}', [App\Http\Controllers\HomeController::class, 'index'])->where('page', '.*');

@@ -8,11 +8,14 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 
+
 class Product extends Model
 {
-    use HasFactory;
+//    use HasFactory;
     use HasSlug;
     use SoftDeletes;
+
+    protected $fillable = ['title', 'description', 'price'];
 
     protected $guarded = false;
 
