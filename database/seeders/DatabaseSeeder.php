@@ -13,12 +13,17 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
 
-        User::factory()->create([
+        $this->call([
+            ProductSeeder::class
+        ]);
+
+
+/*        User::factory()->create([
             'name' => 'Admin',
             'email' => 'admin@example.com',
             'password' => bcrypt('admin123'),
             'email_verified_at' => now(),
             'is_admin' => true
-         ]);
+         ]);*/
     }
 }

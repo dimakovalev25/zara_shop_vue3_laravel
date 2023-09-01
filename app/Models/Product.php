@@ -12,8 +12,9 @@ use Spatie\Sluggable\SlugOptions;
 class Product extends Model
 {
 //    use HasFactory;
-    use HasSlug;
+    use HasSlug, HasFactory;
     use SoftDeletes;
+
 
     protected $fillable = ['title', 'description', 'price'];
 
