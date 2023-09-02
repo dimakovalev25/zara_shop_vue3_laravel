@@ -1,12 +1,30 @@
 <template>
     <div class="flex items-center justify-between mb-3">
-        <h1 class="text-3xl font-semibold">Products</h1>
-        <button type="button"
-                @click="showAddNewModal()"
-                class="py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-            Add new Product
-        </button>
+
+
+        <div class="border-b-2">
+
+            <h1 class="text-3xl font-semibold">Add new product</h1>
+            <form @submit.prevent="onSubmit">
+                <div class="bg-white px-4 pt-5 sm:p-6 sm:pb-4 border-b-2 bg rounded-lg">
+                    <CustomInput class="mb-2" v-model="product.title" label="Product Title"/>
+                    <CustomInput type="file" class="mb-2" label="Product Image" @change="file => product.image = file"/>
+                    <CustomInput type="textarea" class="mb-2" v-model="product.description" label="Description"/>
+                    <CustomInput type="number" class="mb-2" v-model="product.price" label="Price"/>
+
+                    <button type="submit"
+                            class="py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 ">
+                        Submit
+                    </button>
+                </div>
+
+
+
+            </form>
+        </div>
+
     </div>
+    <h1 class="text-3xl font-semibold">Products</h1>
     <div class="bg-white p-4 rounded-lg shadow">
         {{ search }}
 
@@ -38,6 +56,7 @@
                     <th class="border-b-2 p-2 text-left">Image</th>
                     <th class="border-b-2 p-2 text-left">Title</th>
                     <th class="border-b-2 p-2 text-left">Price</th>
+                    <th class="border-b-2 p-2 text-left">Actions</th>
                     <th class="border-b-2 p-2 text-left">Last Updated At</th>
                 </tr>
                 </thead>
@@ -45,13 +64,29 @@
                 <tr v-for="product of products.data">
                     <td class="border-b p-2 ">{{ product.id }}</td>
                     <td class="border-b p-2 ">
-                        <img class="w-16" :src="product.image" :alt="product.title">
+                        <!--                        <img class="w-16" :src="product.image" :alt="product.title">-->
+                        <img class="w-16 h-16 object-cover" :src="product.image_url" :alt="product.title">
                     </td>
                     <td class="border-b p-2 max-w-[200px] whitespace-nowrap overflow-hidden text-ellipsis">
                         {{ product.title }}
                     </td>
                     <td class="border-b p-2">
                         {{ product.price }}
+                    </td>
+                    <td class="border-b p-2">
+                        <button
+                                :class="[
+                        active ? 'bg-indigo-600 text-white' : 'text-gray-900',
+                        'group flex w-full items-center rounded-md px-2 py-2 text-sm',
+                      ]"
+                                @click="deleteProduct(product)"
+                        >   <TrashIcon
+                                :active="active"
+                                class="mr-2 h-5 w-5 text-indigo-400"
+                                aria-hidden="true"
+                        />
+                            Delete
+                        </button>
                     </td>
                     <td class="border-b p-2 ">
                         {{ product.updated_at }}
@@ -92,22 +127,28 @@
                 </nav>
             </div>
         </template>
-<!--        <AddNewProduct v-model="showProductModal"/>-->
     </div>
-        <add-new-product v-model="showProductModal"></add-new-product>
 </template>
 
 <script setup>
 import {computed, onMounted, ref} from "vue";
 import store from '../store/store.js'
 import Spinner from "../components/core/Spinner.vue";
-import AddNewProduct from "../views/AddNewProduct.vue";
 import {PRODUCTS_PER_PAGE} from "../constants";
+import CustomInput from "./core/CustomInput.vue";
+import {TrashIcon} from "@heroicons/vue/20/solid/index.js";
 
 const perPage = ref(PRODUCTS_PER_PAGE);
 const search = ref('');
 const products = computed(() => store.state.products);
-const showProductModal = ref(false);
+
+
+const product = ref({
+    title: null,
+    image: null,
+    description: null,
+    price: null
+})
 
 onMounted(() => {
     getProducts();
@@ -118,12 +159,32 @@ function getForPage(ev, link) {
     if (!link.url || link.active) {
         return;
     }
-
     getProducts(link.url)
 }
 
-function showAddNewModal() {
-    showProductModal.value = true
+
+function onSubmit() {
+    store.dispatch('createProduct', product.value)
+        .then(response => {
+            if (response.status === 201) {
+                store.dispatch('getProducts')
+            }
+            getProducts();
+        })
+        .catch(res => {
+            console.log(res)
+        })
+}
+
+function deleteProduct(product){
+    if (!confirm(`Are you sure you want to delete the product?`)) {
+        return
+    }
+    store.dispatch('deleteProduct', product.id)
+        .then(res => {
+            store.dispatch('getProducts')
+            getProducts();
+        })
 }
 
 function getProducts(url = null) {
@@ -132,5 +193,6 @@ function getProducts(url = null) {
         search: search.value,
         perPage: perPage.value,
     });
+
 }
 </script>

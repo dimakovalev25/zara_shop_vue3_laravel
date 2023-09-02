@@ -16,6 +16,10 @@ import Get from "../components/Get.vue";
 
 const routes =[
     {
+        path: '/',
+        redirect: '/app'
+    },
+    {
         path: '/home',
         name: 'home',
         component: Home
@@ -58,14 +62,14 @@ const routes =[
         },
         children: [
             {
-                path: 'dashboard',
-                name: 'app.dashboard',
-                component: Dashboard
-            },
-            {
                 path: 'products',
                 name: 'app.products',
                 component: Products
+            },
+            {
+                path: 'dashboard',
+                name: 'app.dashboard',
+                component: Dashboard
             },
             {
                 path: 'orders',

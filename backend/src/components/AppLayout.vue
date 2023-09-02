@@ -1,4 +1,5 @@
 <template>
+
 <!--    <div class="min-h-full bg-gray-200 flex">
      <sidebar :class="{'-ml-[200px]': !sidebarOpened}"></sidebar>
         <div class="flex-1">
@@ -13,7 +14,7 @@
         <Sidebar></Sidebar>
 <!--        <Spinner></Spinner>-->
         <div class="flex-1 bg-gray-200">
-            <top-header></top-header>
+<!--            <top-header></top-header>-->
 
             <main class="p-6">
                 <router-view></router-view>

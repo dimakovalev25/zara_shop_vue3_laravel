@@ -16,11 +16,7 @@ class ProductSeeder extends Seeder
     {
 
         for ($i = 0; $i < 15; $i++){
-/*            Product::factory()->create([
-                'title' => rand(5,5),
-                'description' => rand(10,11),
-                'price' => random_int(1,100),
-            ]);*/
+
             DB::table('products')->insert([
                 'title' => Str::random(10),
                 'slug' => Str::random(10),
