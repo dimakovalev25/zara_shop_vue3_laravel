@@ -1,9 +1,9 @@
 export default {
     test: 'test',
     user: {
-        // token: sessionStorage.getItem('TOKEN'),
-        token: 123,
-        data: {}
+        token: sessionStorage.getItem('TOKEN'),
+        // token: 123,
+        data: {},
     },
     products: {
         loading: false,

@@ -2,6 +2,7 @@
     <div class="flex items-center justify-between mb-3">
 
 
+
         <div class="border-b-2">
 
             <h1 class="text-3xl font-semibold">Add new product</h1>

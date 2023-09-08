@@ -13,16 +13,25 @@ import Reports from "../components/Reports.vue";
 import store from "../store/store.js";
 import NotFound from "../components/NotFound.vue";
 import Get from "../components/Get.vue";
+import TailWind from "../components/TailWind.vue";
+
 
 const routes =[
     {
         path: '/',
         redirect: '/app'
     },
+
     {
         path: '/home',
         name: 'home',
         component: Home
+    },
+
+    {
+        path: '/tw',
+        name: 'tw',
+        component: TailWind
     },
     {
         path: '/get',

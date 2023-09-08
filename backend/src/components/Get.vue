@@ -1,13 +1,19 @@
 <template>
 <div>
-    get component
+    get component {{ test}} {{pr}} !!!
 </div>
 </template>
 
-<script>
-export default {
-    name: "Get"
-}
+<script setup>
+
+
+import state from "../store/state.js";
+
+const test = state.test
+const {pr} = defineProps({
+    pr: String
+})
+
 </script>
 
 <style scoped>

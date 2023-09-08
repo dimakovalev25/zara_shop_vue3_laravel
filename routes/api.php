@@ -13,3 +13,10 @@ Route::middleware(['auth:sanctum', 'admin'])->group(function () {
 });
 Route::post('/login', [\App\Http\Controllers\AuthController::class, 'login']);
 Route::apiResource('products', ProductController::class);
+
+
+/*Route::group(['middleware' => 'cors'], function () {
+    Route::post('/posts',[\App\Http\Controllers\PostController::class, 'store']);
+    Route::get('/posts',[\App\Http\Controllers\PostController::class, 'get']);
+
+});*/

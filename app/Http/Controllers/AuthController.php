@@ -14,7 +14,7 @@ class AuthController extends Controller
             'password' => 'required',
             'remember' => 'boolean'
         ]);
-        dd($credentials);
+//        dd($credentials);
 
         $remember = $credentials['remember'] ?? false;
         unset($credentials['remember']);
