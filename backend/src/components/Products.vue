@@ -283,6 +283,7 @@ function getProducts(url = null) {
         search: search.value,
         perPage: perPage.value,
     });
+    console.log(perPage.value)
 
 }
 </script>

@@ -26,17 +26,11 @@ export function getProduct({commit}, id) {
     return axiosClient.get(`/products/${id}`)
 }
 
-export function getProducts({commit, state}, {url = null, search = '', per_page, sort_field, sort_direction} = {}) {
+export function getProducts({commit, state}, {url = null, search, perPage}) {
     commit('setProducts', [true])
     url = url || '/products'
-    const params = {
-        per_page: state.products.limit,
-    }
     return axiosClient.get(url, {
-        params: {
-            ...params,
-            search, per_page, sort_field, sort_direction
-        }
+        params: {search,per_page: perPage}
     })
         .then((response) => {
             commit('setProducts', [false, response.data])
