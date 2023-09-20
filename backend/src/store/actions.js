@@ -1,8 +1,8 @@
-// import axiosClient from "../axios.js";
-import axios from "axios";
+import axiosClient from "../axios.js";
+/*import axios from "axios";
 const axiosClient = axios.create({
     baseURL: `http://localhost:8000/api`
-})
+})*/
 
 export function getUser({commit}, data) {
     return axiosClient.get('/user', data)

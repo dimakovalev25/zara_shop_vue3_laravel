@@ -18,14 +18,14 @@ import TopHeader from "./TopHeader.vue";
 import Navbar from "./Navbar.vue";
 // import store from "../store/store.js";
 import Sidebar from "./Sidebar.vue";
-import Spinner from "./core/Spinner.vue";
+// import Spinner from "./core/Spinner.vue";
 import store from "../store/store.js";
 import router from "../router/router.js";
 
 
 export default {
     name: "GuestLayout",
-    components: {Spinner, Sidebar, Navbar, TopHeader},
+    components: { Sidebar, Navbar},
 
     mounted() {
         // store.dispatch('getUser')

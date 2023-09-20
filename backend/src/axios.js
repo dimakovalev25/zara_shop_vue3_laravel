@@ -7,6 +7,8 @@ import router from "./router/router.js";
 })*/
 
 
+
+
 const axiosClient = axios.create({
     baseURL: `${import.meta.env.VITE_API_BASE_URL}/api`
 })
@@ -21,7 +23,6 @@ axiosClient.interceptors.response.use(response => {
         sessionStorage.removeItem('TOKEN')
         router.push({name: 'login'})
     }
-    console.error(error)
-    // throw error;
+    throw error;
 })
 export default axiosClient;
