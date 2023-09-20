@@ -1,9 +1,6 @@
 <template>
-    <div class="flex items-center justify-between mb-3">
-
-
-
-        <div class="border-b-2">
+    <div class="flex mb-3">
+        <div v-if="!editedProduct" class="border-b-2">
 
             <h1 class="text-3xl font-semibold">Add new product</h1>
             <form @submit.prevent="onSubmit">
@@ -19,6 +16,24 @@
                     </button>
                 </div>
 
+
+            </form>
+        </div>
+
+        <div v-if="editedProduct" class="border-b-2">
+            <h1 class="text-3xl font-semibold">Edit product ID: {{ editedProduct.id }}</h1>
+            <form @submit.prevent="onEditSubmit">
+                <div class="bg-white px-4 pt-5 sm:p-6 sm:pb-4 border-b-2 bg rounded-lg">
+                    <CustomInput class="mb-2" v-model="editedProduct.title"/>
+                    <CustomInput @change="file => editedProduct.image = file" type="file" class="mb-2"/>
+                    <CustomInput class="mb-2" v-model="editedProduct.description"/>
+                    <CustomInput type="number" class="mb-2" v-model="editedProduct.price"/>
+
+                    <button type="submit"
+                            class="py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 ">
+                        Submit
+                    </button>
+                </div>
 
 
             </form>
@@ -81,12 +96,27 @@
                         'group flex w-full items-center rounded-md px-2 py-2 text-sm',
                       ]"
                                 @click="deleteProduct(product)"
-                        >   <TrashIcon
-                                :active="active"
-                                class="mr-2 h-5 w-5 text-indigo-400"
-                                aria-hidden="true"
-                        />
+                        >
+                            <TrashIcon
+                                    :active="active"
+                                    class="mr-2 h-5 w-5 text-red-400"
+                                    aria-hidden="true"
+                            />
                             Delete
+                        </button>
+                        <button
+                                :class="[
+                        active ? 'bg-indigo-600 text-white' : 'text-gray-900',
+                        'group flex w-full items-center rounded-md px-2 py-2 text-sm',
+                      ]"
+                                @click="editProduct(product)"
+                        >
+                            <PencilIcon
+                                    :active="active"
+                                    class="mr-2 h-5 w-5 text-indigo-400"
+                                    aria-hidden="true"
+                            />
+                            Edit
                         </button>
                     </td>
                     <td class="border-b p-2 ">
@@ -138,6 +168,7 @@ import Spinner from "../components/core/Spinner.vue";
 import {PRODUCTS_PER_PAGE} from "../constants";
 import CustomInput from "./core/CustomInput.vue";
 import {TrashIcon} from "@heroicons/vue/20/solid/index.js";
+import {PencilIcon} from "@heroicons/vue/20/solid/index.js";
 
 const perPage = ref(PRODUCTS_PER_PAGE);
 const search = ref('');
@@ -151,6 +182,65 @@ const product = ref({
     price: null
 })
 
+const editedProduct = ref(null);
+
+/*async function onEditSubmit() {
+
+    store.dispatch('deleteProduct', editedProduct.value.id)
+        .then(res => {
+            store.dispatch('updateProduct', {
+                id: editedProduct.value.id,
+                title: editedProduct.value.title,
+                price: editedProduct.value.price,
+                image: editedProduct.value.image,
+                description: editedProduct.value.description,
+
+            })
+                .then(response => {
+                    if (response.status === 201) {
+                        store.dispatch('getProducts')
+                    }
+                    getProducts();
+                })
+                .catch(res => {
+                    console.log(res)
+                })
+                .finally(res => {
+                    editedProduct.value = null
+                })
+        })
+
+}*/
+async function onEditSubmit() {
+
+    store.dispatch('updateProduct', {
+        id: editedProduct.value.id,
+        title: editedProduct.value.title,
+        price: editedProduct.value.price,
+        image: editedProduct.value.image,
+        description: editedProduct.value.description,
+
+    })
+        .then(response => {
+            if (response.status === 201) {
+                store.dispatch('getProducts')
+            }
+            getProducts();
+        })
+        .catch(res => {
+            console.log(res)
+        })
+        .finally(res => {
+            editedProduct.value = null
+        })
+
+}
+
+function editProduct(product) {
+    editedProduct.value = {...product};
+    console.log(editedProduct.value)
+}
+
 onMounted(() => {
     getProducts();
 })
@@ -163,7 +253,6 @@ function getForPage(ev, link) {
     getProducts(link.url)
 }
 
-
 function onSubmit() {
     store.dispatch('createProduct', product.value)
         .then(response => {
@@ -175,12 +264,12 @@ function onSubmit() {
         .catch(res => {
             console.log(res)
         })
+        .finally(err => {
+            product.value = null
+        })
 }
 
-function deleteProduct(product){
-    if (!confirm(`Are you sure you want to delete the product?`)) {
-        return
-    }
+function deleteProduct(product) {
     store.dispatch('deleteProduct', product.id)
         .then(res => {
             store.dispatch('getProducts')

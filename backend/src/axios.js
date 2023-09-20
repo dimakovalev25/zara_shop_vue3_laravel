@@ -7,8 +7,6 @@ import router from "./router/router.js";
 })*/
 
 
-
-
 const axiosClient = axios.create({
     baseURL: `${import.meta.env.VITE_API_BASE_URL}/api`
 })

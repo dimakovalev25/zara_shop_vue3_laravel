@@ -15,3 +15,5 @@ Route::middleware(['auth:sanctum', 'admin'])->group(function () {
 });
 
 Route::post('/login', [\App\Http\Controllers\AuthController::class, 'login']);
+
+Route::put('/products/{product}', [ProductController::class, 'update']);
