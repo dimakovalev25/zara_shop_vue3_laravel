@@ -13,7 +13,9 @@
                         class="text-sm text-purple-700 hover:text-purple-600"
                 >create new account</a
                 >
-                <x-auth-validation-errors class="mb-4" :errors="$errors"/>
+
+
+{{--   show errors!!!!!            <x-auth-validation-errors class="mb-4" :errors="$errors"/>--}}
 
             </p>
             <div class="mb-4">
@@ -22,6 +24,7 @@
                         type="email"
                         name="email"
                         :value="old('email')"
+                        :errors="$errors"
                         placeholder="Your email address"
                 />
             </div>
@@ -30,6 +33,7 @@
                         id="loginPassword"
                         type="password"
                         :value="old('password')"
+                        :errors="$errors"
                         name="password"
                         placeholder="Your password"
                 />
@@ -44,7 +48,7 @@
                     />
                     <label for="loginRememberMe">Remember Me</label>
                 </div>
-{{--                <a href="/src/password-reset.html" class="text-sm text-purple-700 hover:text-purple-600">Forgot Password?</a>--}}
+                <a href="{{route('password.request')}}" class="text-sm text-purple-700 hover:text-purple-600">Forgot Password?</a>
             </div>
             <button
                     class="btn-primary bg-emerald-500 hover:bg-emerald-600 active:bg-emerald-700 w-full"

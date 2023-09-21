@@ -1,4 +1,78 @@
-<x-guest-layout>
+<x-app-layout>
+    <main class="p-5">
+        <form action="{{ route('login') }}" method="POST" class="w-[400px] mx-auto p-6 my-16">
+            @csrf
+            <h2 class="text-2xl font-semibold text-center mb-5">
+                Create new account
+            </h2>
+         {{--   <p class="text-center text-gray-500 mb-6">
+                or
+                <a
+                        href="{{ route('register') }}"
+                        class="text-sm text-purple-700 hover:text-purple-600"
+                >create new account</a
+                >
+
+
+                --}}{{--   show errors!!!!!            <x-auth-validation-errors class="mb-4" :errors="$errors"/>--}}{{--
+
+            </p>--}}
+
+            <div class="mb-4">
+                <x-input
+                        type="text"
+                        :errors="$errors"
+                        name="name"
+                        placeholder="Your name"
+                />
+            </div>
+
+            <div class="mb-4">
+                <x-input
+                        type="number"
+                        :errors="$errors"
+                        name="phone"
+                        placeholder="Your phone"
+                />
+            </div>
+
+            <div class="mb-4">
+                <x-input
+                        type="email"
+                        name="email"
+                        :errors="$errors"
+                        placeholder="Your email address"
+                />
+            </div>
+            <div class="mb-4">
+                <x-input
+                        type="password"
+                        :errors="$errors"
+                        name="password"
+                        placeholder="Your password"
+                />
+            </div>
+
+            <div class="flex justify-between items-center mb-5">
+                <div class="flex items-center">
+                    <input
+                            id="loginRememberMe"
+                            type="checkbox"
+                            class="mr-3 rounded border-gray-300 text-purple-500 focus:ring-purple-500"
+                    />
+                    <label for="loginRememberMe">Remember Me</label>
+                </div>
+
+            </div>
+            <button
+                    class="btn-primary bg-emerald-500 hover:bg-emerald-600 active:bg-emerald-700 w-full"
+            >
+                Register
+            </button>
+        </form>
+    </main>
+
+{{--
     <form method="POST" action="{{ route('register') }}">
         @csrf
 
@@ -48,5 +122,5 @@
                 {{ __('Register') }}
             </x-primary-button>
         </div>
-    </form>
-</x-guest-layout>
+    </form>--}}
+</x-app-layout>
