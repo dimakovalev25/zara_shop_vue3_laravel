@@ -434,9 +434,9 @@
         <ul class="grid grid-flow-col">
             <li>
                 <a
-                        href="/"
+                        href="{{route('products')}}"
                         class="block py-navbar-item px-navbar-item hover:bg-slate-900"
-                >Home</a
+                >Products</a
                 >
             </li>
             <li>

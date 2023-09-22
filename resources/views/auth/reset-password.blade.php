@@ -16,12 +16,11 @@
             </p>
 
             <div class="mb-3">
-                <input
+                <x-input
                         id="loginEmail"
                         type="email"
                         name="email"
                         placeholder="Your email address"
-                        class="border-gray-300 focus:border-purple-500 focus:outline-none focus:ring-purple-500 rounded-md w-full"
                 />
             </div>
             <button
