@@ -82,9 +82,9 @@ class Cart
 
     }
 
-    public static function getCountAndTotalFromItems()
+    public static function getCountAndTotalFromItems($cartItems)
     {
-        
+        return $cartItems;
     }
 
 }
