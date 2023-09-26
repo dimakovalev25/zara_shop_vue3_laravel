@@ -23,7 +23,7 @@
                 </a>
                 <div class="p-4">
                     <h3 class="text-lg">
-                        <a href="/src/product.html">
+                        <a href="{{route('product', $product)}}">
                             {{$product->title}}
                         </a>
                     </h3>
@@ -60,6 +60,6 @@
 
     </div>
 
-    {{$products->links()}}
+{{--    {{$products->links()}}--}}
 
 </x-app-layout>

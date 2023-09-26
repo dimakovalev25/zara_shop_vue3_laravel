@@ -137,12 +137,12 @@
                         {{ $product->description }}
                     </div>
                     <p class="text-right">
-                        <a
+{{--                        <a
                                 @click="expanded = !expanded"
                                 href="javascript:void(0)"
                                 class="text-purple-500 hover:text-purple-700"
                                 x-text="expanded ? 'Read Less' : 'Read More'"
-                        ></a>
+                        ></a>--}}
                     </p>
                 </div>
             </div>
