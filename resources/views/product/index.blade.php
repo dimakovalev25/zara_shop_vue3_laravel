@@ -14,7 +14,7 @@
           })"
                     class="border border-1 border-gray-200 rounded-md hover:border-purple-600 transition-colors bg-white"
             >
-                <a href="/src/product.html" class="block overflow-hidden">
+                <a href="{{route('product', $product)}}" class="block overflow-hidden">
                     <img
                             src="{{$product->image}}"
                             alt=""
