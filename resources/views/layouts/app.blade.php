@@ -27,6 +27,7 @@
 <body>
 
 @include('layouts.navigation')
+@include('layouts.header')
 
 <main class="p-5">
 
@@ -39,7 +40,7 @@
     {{ $slot  }}
 
 </main>
-
+@include('layouts.footer')
 <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
 </body>
 </html>

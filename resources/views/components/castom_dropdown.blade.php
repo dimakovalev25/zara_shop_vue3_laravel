@@ -1,6 +1,6 @@
 @props(['title' => 'title'])
 
-<div class="relative" data-te-dropdown-hover-toggle-ref>
+<div class="relative " data-te-dropdown-hover-toggle-ref>
     <button
             class="flex items-center whitespace-nowrap rounded bg-neutral-50 px-6 pb-2 pt-2.5 text-xs font-medium  leading-normal text-neutral-800 shadow-[0_4px_9px_-4px_#fbfbfb] transition duration-150 ease-in-out hover:bg-neutral-100 hover:shadow-[0_8px_9px_-4px_rgba(251,251,251,0.3),0_4px_18px_0_rgba(251,251,251,0.2)] focus:bg-neutral-100 focus:shadow-[0_8px_9px_-4px_rgba(251,251,251,0.3),0_4px_18px_0_rgba(251,251,251,0.2)] focus:outline-none focus:ring-0 active:bg-neutral-200 active:shadow-[0_8px_9px_-4px_rgba(251,251,251,0.3),0_4px_18px_0_rgba(251,251,251,0.2)] motion-reduce:transition-none"
             type="button"
@@ -8,6 +8,9 @@
             data-te-dropdown-toggle-ref
             aria-expanded="false"
             data-te-ripple-init>
+        <p class="text-lg">
+
+        </p>
        {{ $title }}
         <span class="ml-2 w-2">
       <svg

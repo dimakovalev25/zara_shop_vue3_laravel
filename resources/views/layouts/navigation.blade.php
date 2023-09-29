@@ -9,8 +9,9 @@
         class="flex justify-between bg-slate-800 shadow-md text-white"
 >
     <div>
-        <a href="/products" class="text-3xl block py-navbar-item pl-5"> Apples shop </a>
+        <a href="/products" class="text-4xl block py-navbar-item pl-5"> Apples shop </a>
     </div>
+
 
 
     <div class="block fixed z-10 top-0 bottom-0 height h-full w-[220px] transition-all bg-slate-900 md:hidden"
@@ -230,34 +231,34 @@
 
     <nav class="hidden md:block">
         {{--        центральная менюшка--}}
-        <ul class="grid grid-flow-col">
+        <ul class="grid grid-flow-col ">
 
-            <li class="mt-4 ml-2">
+            <li class="mt-7 ml-2">
 
                 <x-castom_dropdown title="Choose category"></x-castom_dropdown>
 
             </li>
 
-            <li class="mt-4 ml-2">
+            <li class="mt-7 ml-2 ">
 
                 <x-castom_dropdown title="Choose currency"></x-castom_dropdown>
 
             </li>
 
-            <li>
-                <a
-                        href="#"
-                        class="block py-navbar-item px-navbar-item hover:bg-slate-900"
-                >Switch language</a
-                >
+            <li class="mt-7 ml-2 ">
+                <button
+                        type="button"
+                        class="h-10 inline-block rounded bg-green-600 px-6 pb-2 pt-2.5 text-xs font-medium  leading-normal text-white shadow-[0_4px_9px_-4px_#14a44d] transition duration-150 ease-in-out hover:bg-success-600 hover:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] focus:bg-success-600 focus:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] focus:outline-none focus:ring-0 active:bg-success-700 active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(20,164,77,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)]">
+                    Info
+                </button>
             </li>
 
-            <li>
-                <a
-                        href="#"
-                        class="block py-navbar-item px-navbar-item hover:bg-slate-900"
-                >Info</a
-                >
+            <li class="mt-7 ml-2 ">
+                <button
+                        type="button"
+                        class="h-10 inline-block rounded bg-green-600 px-6 pb-2 pt-2.5 text-xs font-medium  leading-normal text-white shadow-[0_4px_9px_-4px_#14a44d] transition duration-150 ease-in-out hover:bg-success-600 hover:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] focus:bg-success-600 focus:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] focus:outline-none focus:ring-0 active:bg-success-700 active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(20,164,77,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)]">
+                    Change language
+                </button>
             </li>
 
         </ul>
@@ -449,6 +450,7 @@
             @endif
         </ul>
     </nav>
+
     <button
             @click="mobileMenuOpen = !mobileMenuOpen"
             class="p-4 block md:hidden"
