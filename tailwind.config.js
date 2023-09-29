@@ -4,6 +4,7 @@ export default {
         './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
+        "./src/**/*.{html,js}",
     ],
 
     theme: {
@@ -17,5 +18,9 @@ export default {
     plugins: [
         require('@tailwindcss/forms'),
         require('@tailwindcss/aspect-ratio'),
+        require("tw-elements/dist/plugin.cjs")
     ],
+    darkMode: "class"
 };
+
+

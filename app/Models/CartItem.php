@@ -9,4 +9,9 @@ class CartItem extends Model
 {
     use HasFactory;
     protected $guarded = false;
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
+    }
 }
