@@ -1,6 +1,6 @@
 <div
         id="carouselExampleCaptions"
-        class="relative"
+        class="relative carousel h-[400px]"
         data-te-carousel-init
         data-te-ride="carousel">
     <!--Carousel indicators-->
@@ -40,7 +40,7 @@
                 style="backface-visibility: hidden">
             <img
                     src="https://content.onliner.by/news/1400x5616/1ad7ed35fd0dbe684439902d33e0047c.jpg"
-                    class="block w-full"
+                    class="block w-full  h-[400px] object-cover"
                     alt="..." />
             <div
                     class="absolute inset-x-[15%] bottom-5 hidden py-5 text-center text-white md:block">
@@ -57,7 +57,7 @@
                 style="backface-visibility: hidden">
             <img
                     src="https://content.onliner.by/news/1400x5616/8e6cde0184687cc1d9a032d8bbf92705.jpg"
-                    class="block w-full"
+                    class="block w-full  h-[400px] object-cover"
                     alt="..." />
             <div
                     class="absolute inset-x-[15%] bottom-5 hidden py-5 text-center text-white md:block">
@@ -74,7 +74,7 @@
                 style="backface-visibility: hidden">
             <img
                     src="https://content.onliner.by/news/1400x5616/c429847522b4fb97b7d15f64c02dc481.jpg"
-                    class="block w-full"
+                    class="block w-full  h-[400px] object-cover"
                     alt="..." />
             <div
                     class="absolute inset-x-[15%] bottom-5 hidden py-5 text-center text-white md:block">
@@ -85,9 +85,8 @@
             </div>
         </div>
     </div>
-
     <!--Carousel controls - prev item-->
-    <button
+{{--    <button
             class="absolute bottom-0 left-0 top-0 z-[1] flex w-[15%] items-center justify-center border-0 bg-none p-0 text-center text-white opacity-50 transition-opacity duration-150 ease-[cubic-bezier(0.25,0.1,0.25,1.0)] hover:text-white hover:no-underline hover:opacity-90 hover:outline-none focus:text-white focus:no-underline focus:opacity-90 focus:outline-none motion-reduce:transition-none"
             type="button"
             data-te-target="#carouselExampleCaptions"
@@ -135,5 +134,5 @@
                 class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]"
         >Next</span
         >
-    </button>
+    </button>--}}
 </div>

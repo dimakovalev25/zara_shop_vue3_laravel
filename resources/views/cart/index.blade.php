@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class="container lg:w-2/3 xl:w-2/3 mx-auto">
+    <div class="container lg:w-2/3 xl:w-2/3 mx-auto  cart">
 
 
         <h1 class="text-3xl font-bold mb-6">Your Cart Items</h1>
@@ -76,7 +76,7 @@
                             Shipping and taxes calculated at checkout.
                         </p>
 
-                        <button type="submit" class="btn-primary w-full py-3 text-lg">
+                        <button type="submit" class=" inline-flex items-center text-white rounded shadow-md transition-colors mx-5 inline-block rounded bg-green-600 px-6 pb-2 pt-2.5 text-base font-medium leading-normal text-white shadow-[0_4px_9px_-4px_#14a44d] transition duration-150 ease-in-out hover:bg-success-600 hover:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] focus:bg-success-600 focus:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] focus:outline-none focus:ring-0 active:bg-success-700 active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(20,164,77,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)]">
                             Proceed to Checkout
                         </button>
                     </div>

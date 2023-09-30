@@ -90,6 +90,12 @@ document.addEventListener("alpine:init", async () => {
             },
         };
     });
+
+    document.addEventListener("scroll", () => {
+        const header = document.querySelector(".fixed-header");
+        const scrolling = window.scrollY > 100;
+        header.__x.$data.scrolling = scrolling;
+    });
 });
 
 Alpine.start();

@@ -36,6 +36,8 @@
 
 body {
     background-color: #e5e7eb;
+    /*font-family: 'San Francisco Pro Text', sans-serif;*/
+    font-family: 'Poppins', sans-serif;
 }
 
 .wysiwyg-content h3,
@@ -44,24 +46,61 @@ body {
     margin-top: 1rem;
 }
 
-.wysiwyg-content table > tbody > tr > td{
+.wysiwyg-content table > tbody > tr > td {
     padding: 0.25rem 0.125rem;
 }
+
 .wysiwyg-content table > tbody > tr > td:first-child {
     font-weight: bold;
 }
 
-.table>tbody>tr>td,
-.table>thead>tr>th {
+.table > tbody > tr > td,
+.table > thead > tr > th {
     padding: 0.5rem;
 }
-.table-sm>tbody>tr>td,
-.table-sm>thead>tr>th {
+
+.table-sm > tbody > tr > td,
+.table-sm > thead > tr > th {
     padding: 0.25rem;
 }
+
 .relative:hover [data-te-dropdown-menu-ref] {
     display: block;
 }
+
 .absolute[data-te-dropdown-menu-ref] {
-    width: 100%; /* Установите ширину равной 100% */
+    width: 100%;
+}
+
+
+.fixed-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+
+footer {
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.carousel {
+    margin-top: 80px;
+}
+
+.cart {
+    margin-top: 80px;
+}
+
+.card_item {
+    margin-top: 90px;
+}
+.logo a{
+    font-size: 30px;
+    font-weight: 700;
+    color: #1b1b1b;
+    margin-top: -6px;
 }

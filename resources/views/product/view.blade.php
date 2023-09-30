@@ -1,4 +1,7 @@
 <x-app-layout>
+    {{--    @include('product.card')--}}
+
+
     <div x-data="productItem({{ json_encode([
                     'id' => $product->id,
                     'slug' => $product->slug,
@@ -6,7 +9,7 @@
                     'title' => $product->title,
                     'price' => $product->price,
                       'addToCartUrl' => route('cart.add', $product)
-                ]) }})" class="container mx-auto">
+                ]) }})" class="container mx-auto card_item">
         <div class="grid gap-6 grid-cols-1 lg:grid-cols-5">
             <div class="lg:col-span-3">
                 <div
@@ -96,9 +99,9 @@
                     {{$product->title}}
                 </h1>
                 <div class="text-xl font-bold mb-6">${{$product->price}}</div>
-                <div class="flex items-center justify-between mb-5">
+                <div class=" mb-5">
                     <label for="quantity" class="block font-bold mr-4">
-                        Quantity
+                        Quantity:
                     </label>
                     <input
                             type="number"
@@ -106,12 +109,13 @@
                             x-ref="quantityEl"
                             value="1"
                             min="1"
-                            class="w-32 focus:border-purple-500 focus:outline-none rounded"
+                            class=" w-24 focus:border-purple-500 focus:outline-none rounded"
                     />
                 </div>
                 <button
                         @click="addToCart($refs.quantityEl.value)"
-                        class="btn-primary py-4 text-lg flex justify-center min-w-0 w-full mb-6"
+
+                        class="btn-primary py-4 flex justify-center min-w-0 w-full mb-6 inline-block rounded bg-emerald-600 px-6 pb-2 pt-2.5 text-2xs font-medium leading-normal text-white shadow-[0_4px_9px_-4px_#14a44d] transition duration-150 ease-in-out hover:bg-emerald-600 hover:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] focus:bg-emerald-600 focus:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] focus:outline-none focus:ring-0 active:bg-success-700 active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(20,164,77,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)]"
                 >
                     <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -135,7 +139,8 @@
                             x-collapse.min.120px
                             class="text-gray-500 wysiwyg-content"
                     >
-                        {{ $product->description }}
+                        <p class="block font-bold mr-4">
+                            Description:</p> {{ $product->description }}
                     </div>
 
                 </div>
