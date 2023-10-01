@@ -43,7 +43,7 @@
                                     </div>
                                     <div class="flex justify-between items-center">
                                         <div class="flex items-center">
-                                            Qty:
+                                            Quantity:
                                             <input
                                                     type="number"
                                                     min="1"
@@ -55,7 +55,7 @@
                                         <a
                                                 href="#"
                                                 @click.prevent="removeItemFromCart()"
-                                                class="text-purple-600 hover:text-purple-500"
+                                                class="text-indigo-600 hover:text-indigo-800"
                                         >Remove</a
                                         >
                                     </div>

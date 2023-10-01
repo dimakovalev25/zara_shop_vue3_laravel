@@ -4,10 +4,6 @@ import Alpine from 'alpinejs';
 import collapse from '@alpinejs/collapse'
 import {get, post} from "./http.js";
 
-/*import { Datepicker, Input } from 'tw-elements';
-Alpine.data('teDatepicker', Datepicker);
-Alpine.data('teInput', Input);*/
-
 Alpine.plugin(collapse)
 window.Alpine = Alpine;
 
@@ -91,11 +87,6 @@ document.addEventListener("alpine:init", async () => {
         };
     });
 
-    document.addEventListener("scroll", () => {
-        const header = document.querySelector(".fixed-header");
-        const scrolling = window.scrollY > 100;
-        header.__x.$data.scrolling = scrolling;
-    });
 });
 
 Alpine.start();

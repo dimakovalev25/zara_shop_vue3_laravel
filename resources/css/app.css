@@ -80,6 +80,17 @@ body {
     z-index: 1000;
 }
 
+header.h16 {
+    height: 5rem;
+    border: 3px solid red;
+
+}
+
+header.h12 {
+    height: 4rem;
+
+}
+
 
 footer {
     bottom: 0;
@@ -88,7 +99,7 @@ footer {
 }
 
 .carousel {
-    margin-top: 80px;
+    margin-top: 85px;
 }
 
 .cart {
