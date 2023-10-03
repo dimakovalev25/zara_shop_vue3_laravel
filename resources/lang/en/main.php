@@ -14,6 +14,7 @@ return [
 
     'curr' => 'Currency',
     'login' => 'Login',
+    'logout' => 'Logout',
     'register' => 'Register',
     'price' => 'Price',
     'for' => ' for',
@@ -58,5 +59,8 @@ return [
     'slider_desc'=>'Store of original equipment and accessories Apple in Belarus',
     'slider_title2'=>'One year warranty on all products',
     'slider_desc2'=>'Delivery in Minsk within an hour, in Belarus within a day for free',
+    'my_acc' => 'My account',
+    'my_profile' => 'My profile',
+    'my_orders' => 'My orders',
 
 ];

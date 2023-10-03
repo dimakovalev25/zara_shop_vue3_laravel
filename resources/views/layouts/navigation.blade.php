@@ -23,11 +23,109 @@
 
 
             <li class="">
-                <x-castom_dropdown title="Choose category"></x-castom_dropdown>
+{{--                <x-castom_dropdown ></x-castom_dropdown>@lang('main.info')--}}
+                <div class="relative " data-te-dropdown-hover-toggle-ref>
+                    <button
+
+                            class="flex items-center text-neutral-500 whitespace-nowrap bg-white text-lg font-medium  shadow-[0_4px_9px_-4px_#fbfbfb] transition duration-150 ease-in-osut hover:bg-neutral-100 hover:shadow-[0_8px_9px_-4px_rgba(251,251,251,0.3),0_4px_18px_0_rgba(251,251,251,0.2)] focus:bg-neutral-100 focus:shadow-[0_8px_9px_-4px_rgba(251,251,251,0.3),0_4px_18px_0_rgba(251,251,251,0.2)] focus:outline-none focus:ring-0 active:bg-neutral-200 active:shadow-[0_8px_9px_-4px_rgba(251,251,251,0.3),0_4px_18px_0_rgba(251,251,251,0.2)] motion-reduce:transition-none hover:text-neutral-700"
+
+
+                            type="button"
+                            id="dropdownMenuButton9"
+                            data-te-dropdown-toggle-ref
+                            aria-expanded="false"
+                            data-te-ripple-init>
+
+                        @lang('main.categories')
+                        <span class="ml-2 w-2">
+      <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+              class="h-5 w-5">
+        <path
+                fill-rule="evenodd"
+                d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                clip-rule="evenodd" />
+      </svg>
+    </span>
+                    </button>
+                    <ul
+                            class="absolute z-[1000] float-left m-0 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg dark:bg-neutral-700 [&[data-te-dropdown-show]]:block"
+                            aria-labelledby="dropdownMenuButton9"
+                            data-te-dropdown-menu-ref>
+                        <li>
+                            <a
+                                    class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-lg  font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600"
+                                    href="#"
+                                    data-te-dropdown-item-ref
+                            >action</a
+                            >
+                        </li>
+                        <li>
+                            <a
+                                    class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-lg  font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600"
+                                    href="#"
+                                    data-te-dropdown-item-ref
+                            >another 2</a
+                            >
+                        </li>
+
+                    </ul>
+                </div>
             </li>
 
             <li class="">
-                <x-castom_dropdown title="Info"></x-castom_dropdown>
+{{--                <x-castom_dropdown></x-castom_dropdown>@lang('main.info')--}}
+                <div class="relative " data-te-dropdown-hover-toggle-ref>
+                    <button
+
+                            class="flex items-center text-neutral-500 whitespace-nowrap bg-white text-lg font-medium  shadow-[0_4px_9px_-4px_#fbfbfb] transition duration-150 ease-in-osut hover:bg-neutral-100 hover:shadow-[0_8px_9px_-4px_rgba(251,251,251,0.3),0_4px_18px_0_rgba(251,251,251,0.2)] focus:bg-neutral-100 focus:shadow-[0_8px_9px_-4px_rgba(251,251,251,0.3),0_4px_18px_0_rgba(251,251,251,0.2)] focus:outline-none focus:ring-0 active:bg-neutral-200 active:shadow-[0_8px_9px_-4px_rgba(251,251,251,0.3),0_4px_18px_0_rgba(251,251,251,0.2)] motion-reduce:transition-none hover:text-neutral-700"
+
+
+                            type="button"
+                            id="dropdownMenuButton9"
+                            data-te-dropdown-toggle-ref
+                            aria-expanded="false"
+                            data-te-ripple-init>
+
+                        @lang('main.info')
+                        <span class="ml-2 w-2">
+      <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+              class="h-5 w-5">
+        <path
+                fill-rule="evenodd"
+                d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                clip-rule="evenodd" />
+      </svg>
+    </span>
+                    </button>
+                    <ul
+                            class="absolute z-[1000] float-left m-0 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg dark:bg-neutral-700 [&[data-te-dropdown-show]]:block"
+                            aria-labelledby="dropdownMenuButton9"
+                            data-te-dropdown-menu-ref>
+                        <li>
+                            <a
+                                    class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-lg  font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600"
+                                    href="#"
+                                    data-te-dropdown-item-ref
+                            >action</a
+                            >
+                        </li>
+                        <li>
+                            <a
+                                    class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-lg  font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600"
+                                    href="#"
+                                    data-te-dropdown-item-ref
+                            >another 2</a
+                            >
+                        </li>
+
+                    </ul>
+                </div>
             </li>
 
 {{--            <li class="" data-te-nav-item-ref>
@@ -50,8 +148,8 @@
             <li class="" data-te-nav-item-ref>
                 <a
                         class="text-lg flex text-neutral-500 transition duration-200 hover:text-neutral-700 hover:ease-in-out focus:text-neutral-700 disabled:text-black/30 motion-reduce:transition-none dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-zinc-400"
-                        href="{{route('locale', __('main.set_lang'))}}"
                         data-te-nav-link-ref
+                        href="{{route('locale', __('main.set_lang'))}}"
                 >@lang('main.lang')
 
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -101,7 +199,7 @@
                                     class="input-group-text flex items-center whitespace-nowrap rounded px-3 py-1.5 text-center text-base font-normal text-neutral-700 dark:text-neutral-200"
                                     id="basic-addon2">
                                 <p class="text-lg  text-neutral-500 transition duration-200 hover:text-neutral-700 hover:ease-in-out focus:text-neutral-700 disabled:text-black/30 motion-reduce:transition-none dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-zinc-400">
-                                    Search</p>
+                                    @lang('main.search')</p>
                                 <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         viewBox="0 0 20 20"
@@ -155,7 +253,7 @@
                                 d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
                         />
                     </svg>
-                    Cart
+                    @lang('main.cart')
 
                 </a>
             </div>
@@ -175,7 +273,7 @@
                             aria-expanded="false"
                             data-te-ripple-init>
 
-                        My Account
+                        @lang('main.my_acc')
                         <span class="ml-2 w-2">
       <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -198,7 +296,7 @@
                                     class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-lg  font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600"
                                     href="#"
                                     data-te-dropdown-item-ref
-                            >My profile</a
+                            >    @lang('main.my_profile')</a
                             >
                         </li>
                         <li>
@@ -206,7 +304,7 @@
                                     class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-lg  font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600"
                                     href="#"
                                     data-te-dropdown-item-ref
-                            >My orders</a
+                            >@lang('main.my_orders')</a
                             >
                         </li>
                         <li>
@@ -232,7 +330,7 @@
                                             class=""
                                             href="#"
                                             data-te-dropdown-item-ref
-                                    >logout
+                                    >@lang('main.logout')
                                     </p>
                                 </button>
                             </form>
@@ -261,12 +359,10 @@
                                     d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"
                             />
                         </svg>
-                        Login
+                        @lang('main.login')
                     </a>
                 </li>
                 <li>
-
-                    {{--                    btn-primary bg-emerald-500 hover:bg-emerald-600 active:bg-emerald-700--}}
 
                     <a
                             href="{{route('register')}}"
@@ -280,7 +376,7 @@
                         </svg>
 
 
-                        Register
+                        @lang('main.register')
                     </a>
                 </li>
             @endif
@@ -298,9 +394,9 @@
                     <li class="pb-3" data-te-nav-item-ref>
                         <a
                                 class="text-lg  text-neutral-500 transition duration-200 hover:text-neutral-700 hover:ease-in-out focus:text-neutral-700 disabled:text-black/30 motion-reduce:transition-none dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-zinc-400"
-                                href="#"
+                                href="{{route('locale', __('main.set_lang'))}}"
                                 data-te-nav-link-ref
-                        >Русский язык</a
+                        >@lang('main.lang')</a
                         >
                     </li>
 
@@ -310,7 +406,7 @@
                                 class="text-lg  text-neutral-500 transition duration-200 hover:text-neutral-700 hover:ease-in-out focus:text-neutral-700 disabled:text-black/30 motion-reduce:transition-none dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-zinc-400"
                                 href="#"
                                 data-te-nav-link-ref
-                        >Products</a
+                        >@lang('main.product')</a
                         >
                     </li>
                     <li class="pb-3" data-te-nav-item-ref>
@@ -318,7 +414,7 @@
                                 class="text-lg  text-neutral-500 transition duration-200 hover:text-neutral-700 hover:ease-in-out focus:text-neutral-700 disabled:text-black/30 motion-reduce:transition-none dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-zinc-400"
                                 href="#"
                                 data-te-nav-link-ref
-                        >Info</a
+                        >@lang('main.info')</a
                         >
                     </li>
 
@@ -327,7 +423,7 @@
                                 class="text-lg  text-neutral-500 transition duration-200 hover:text-neutral-700 hover:ease-in-out focus:text-neutral-700 disabled:text-black/30 motion-reduce:transition-none dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-zinc-400"
                                 href="#"
                                 data-te-dropdown-item-ref
-                        >My profile</a
+                        >@lang('main.my_profile')</a
                         >
                     </li>
                     <li class="pb-3">
@@ -335,7 +431,7 @@
                                 class="text-lg  text-neutral-500 transition duration-200 hover:text-neutral-700 hover:ease-in-out focus:text-neutral-700 disabled:text-black/30 motion-reduce:transition-none dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-zinc-400"
                                 href="#"
                                 data-te-dropdown-item-ref
-                        >My orders</a
+                        >@lang('main.my_orders')</a
                         >
                     </li>
                     <li class="pt-3">
@@ -347,7 +443,7 @@
                                         class=""
                                         href="#"
                                         data-te-dropdown-item-ref
-                                >Logout
+                                >@lang('main.logout')
                                 </p>
 
 
@@ -367,7 +463,7 @@
                                 href="{{route('login')}}"
                                 class="flex block text-lg  text-green-700 transition duration-200 hover:text-green-800 hover:ease-in-out focus:text-neutral-700 disabled:text-black/30 motion-reduce:transition-none dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-zinc-400"
                         >
-                            Login
+                            @lang('main.login')
                         </a>
                     </li>
 
@@ -376,16 +472,16 @@
                                 href="{{route('register')}}"
                                 class="flex block text-lg  text-green-700 transition duration-200 hover:text-green-800 hover:ease-in-out focus:text-neutral-700 disabled:text-black/30 motion-reduce:transition-none dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-zinc-400"
                         >
-                            Register
+                            @lang('main.register')
                         </a>
                     </li>
 
                     <li class="pb-3" data-te-nav-item-ref>
                         <a
                                 class="text-lg  text-neutral-500 transition duration-200 hover:text-neutral-700 hover:ease-in-out focus:text-neutral-700 disabled:text-black/30 motion-reduce:transition-none dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-zinc-400"
-                                href="#"
+                                href="{{route('locale', __('main.set_lang'))}}"
                                 data-te-nav-link-ref
-                        >Русский язык</a
+                        >   @lang('main.lang')</a
                         >
                     </li>
 
@@ -394,16 +490,7 @@
                                 class="text-lg  text-neutral-500 transition duration-200 hover:text-neutral-700 hover:ease-in-out focus:text-neutral-700 disabled:text-black/30 motion-reduce:transition-none dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-zinc-400"
                                 href="#"
                                 data-te-nav-link-ref
-                        >Products</a
-                        >
-                    </li>
-
-                    <li class="pb-3" data-te-nav-item-ref>
-                        <a
-                                class="text-lg  text-neutral-500 transition duration-200 hover:text-neutral-700 hover:ease-in-out focus:text-neutral-700 disabled:text-black/30 motion-reduce:transition-none dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-zinc-400"
-                                href="#"
-                                data-te-nav-link-ref
-                        >Dashboard</a
+                        >   @lang('main.product')</a
                         >
                     </li>
                     <li class="pb-3" data-te-nav-item-ref>
@@ -411,7 +498,7 @@
                                 class="text-lg  text-neutral-500 transition duration-200 hover:text-neutral-700 hover:ease-in-out focus:text-neutral-700 disabled:text-black/30 motion-reduce:transition-none dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-zinc-400"
                                 href="#"
                                 data-te-nav-link-ref
-                        >Info</a>
+                        >   @lang('main.info')</a>
                     </li>
 
 

@@ -5,6 +5,10 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['guestOrVerified', 'set_locale'])->group(function () {
+
+
+    require __DIR__ . '/auth.php';
+
     Route::get('locale/{locale}', [\App\Http\Controllers\LanguageController::class, 'changeLocale'])->name('locale');
 
 
@@ -37,4 +41,3 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__ . '/auth.php';
