@@ -9,11 +9,39 @@ return [
     'set_lang' => 'ru',
     'ru_lang' => 'Русский язык',
     'en_lang' => 'English language',
-    'lang' => 'English language',
+
+    'lang' => 'Change language',
 
 
     'curr' => 'Currency',
     'login' => 'Login',
+
+    'login_acc' => 'Login to your account',
+    'login_or' => 'or create new account',
+    'forgot' => 'Forgot Password?',
+    'remember' => 'Remember Me',
+    'new_acc' => 'Create an account',
+    'or_login' => 'or login with existing account',
+    'signup' => 'signup',
+    'enter_mail' => 'Enter your Email to reset password',
+
+    'items' => 'Your Cart Items',
+    'subtotal' => 'Subtotal',
+    'ship' => 'Shipping and taxes calculated at checkout',
+    'proc' => 'Proceed to Checkout',
+    'delete' => 'Delete',
+
+
+    'connect' => 'Get connected with us on social networks:',
+    'useful' => 'Useful links',
+    'contacts' => 'Contacts',
+
+
+    'y_pass' => 'Your password',
+    'y_name' => 'Your name',
+    'y_email' => 'Your email address',
+    'y_pass2' => 'Repeat password',
+
     'logout' => 'Logout',
     'register' => 'Register',
     'price' => 'Price',
@@ -31,7 +59,7 @@ return [
     'pay' => 'Payment',
     'delivery' => 'Delivery',
     'gar' => 'Product warranty',
-    'Add_to_cart' => 'Add to cart',
+    'add_to_cart' => 'Add to cart',
     "pagination.previous" => '<< Previous page',
     'pagination.next' => 'Next page >>',
     'ip' => 'IP Marochkin Minsk A.Glinki 65-65',
@@ -62,5 +90,6 @@ return [
     'my_acc' => 'My account',
     'my_profile' => 'My profile',
     'my_orders' => 'My orders',
+    'no_product' => 'There are no products published',
 
 ];

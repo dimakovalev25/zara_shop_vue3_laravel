@@ -21,6 +21,91 @@
 
         <ul class="grid grid-flow-col gap-6">
 
+            <div x-data="{ searchVisible: false }">
+                <li class="w-50" data-te-nav-item-ref>
+                    <div class="mt-[-5px]">
+                        <div class="">
+                            <div x-show="searchVisible">
+                                <form class=" flex w-full flex-wrap items-stretch" method="GET"
+                                      action="{{route("search")}}">
+                                    <input
+                                            name="title"
+                                            type="search"
+                                            class="relative m-0 block h-[40px] w-[1px] min-w-0 flex-auto rounded border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-neutral-700 outline-none transition duration-200 ease-in-out focus:z-[3] focus:border-indigo-800 focus:text-neutral-700 focus:shadow-[inset_0_0_0_1px_rgb(59,113,202)] focus:outline-none dark:border-neutral-600 dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:focus:border-primary"
+                                            aria-label="Search"
+                                            aria-describedby="button-addon2"/>
+
+                                    <button
+                                            class="input-group-text flex items-center whitespace-nowrap rounded px-3 py-1.5 text-center text-base font-normal text-neutral-700 dark:text-neutral-200"
+                                            id="basic-addon2">
+                                        <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                viewBox="0 0 20 20"
+                                                fill="currentColor"
+                                                class="h-5 w-5 text-neutral-500 transition duration-200 hover:text-neutral-700">
+                                            <path
+                                                    fill-rule="evenodd"
+                                                    d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z"
+                                                    clip-rule="evenodd"/>
+                                        </svg>
+                                    </button>
+
+                                </form>
+                            </div>
+
+                            <button x-show="!searchVisible"
+                                    @click="searchVisible = !searchVisible"
+                                    class="input-group-text flex items-center whitespace-nowrap rounded px-3 py-1.5 text-center text-base font-normal text-neutral-700 dark:text-neutral-200"
+                                    id="basic-addon2">
+                                <p class="text-lg  text-neutral-500 transition duration-200 hover:text-neutral-700 hover:ease-in-out focus:text-neutral-700 disabled:text-black/30 motion-reduce:transition-none dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-zinc-400">
+                                    @lang('main.search')</p>
+                                <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 20 20"
+                                        fill="currentColor"
+                                        class="h-5 w-5 text-neutral-500 transition duration-200 hover:text-neutral-700">
+                                    <path
+                                            fill-rule="evenodd"
+                                            d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z"
+                                            clip-rule="evenodd"/>
+                                </svg>
+
+                            </button>
+                        </div>
+                    </div>
+                </li>
+            </div>
+
+            <li class="" data-te-nav-item-ref>
+                <a
+                        class="text-lg flex text-neutral-500 transition duration-200 hover:text-neutral-700 hover:ease-in-out focus:text-neutral-700 disabled:text-black/30 motion-reduce:transition-none dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-zinc-400"
+                        data-te-nav-link-ref
+                        href="{{route('locale', __('main.set_lang'))}}"
+                >@lang('main.lang')
+
+                    {{--                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                             stroke="currentColor" class="ml-2 w-5 h-5 mt-1">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                  d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99"/>
+
+
+
+                                        </svg>--}}
+
+                    @if(App::getLocale() === 'ru')
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="0.9" stroke="currentColor" class=" w-12 h-8 mt-[-2px] ">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99"/>
+                            <text font-size="8" x="7" y="15" fill="currentColor">En</text>
+                        </svg>
+                    @else
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="0.9" stroke="currentColor" class=" w-12 h-8 mt-[-2px]">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99"/>
+                            <text font-size="8"  x="7" y="15" fill="red">Ru</text>
+                        </svg>
+
+                    @endif
+                </a>
+            </li>
 
             <li class="">
 {{--                <x-castom_dropdown ></x-castom_dropdown>@lang('main.info')--}}
@@ -145,77 +230,9 @@
                 </a>
             </li>
             --}}
-            <li class="" data-te-nav-item-ref>
-                <a
-                        class="text-lg flex text-neutral-500 transition duration-200 hover:text-neutral-700 hover:ease-in-out focus:text-neutral-700 disabled:text-black/30 motion-reduce:transition-none dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-zinc-400"
-                        data-te-nav-link-ref
-                        href="{{route('locale', __('main.set_lang'))}}"
-                >@lang('main.lang')
-
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                         stroke="currentColor" class="ml-2 w-5 h-5 mt-1">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                              d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99"/>
-                    </svg>
-
-                </a>
-            </li>
 
 
-            <div x-data="{ searchVisible: false }">
-                <li class="w-80" data-te-nav-item-ref>
-                    <div class="mt-[-5px]">
-                        <div class="">
-                            <div x-show="searchVisible">
-                                <form class=" flex w-full flex-wrap items-stretch" method="GET"
-                                      action="{{route("search")}}">
-                                    <input
-                                            name="title"
-                                            type="search"
-                                            class="relative m-0 block h-[40px] w-[1px] min-w-0 flex-auto rounded border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-neutral-700 outline-none transition duration-200 ease-in-out focus:z-[3] focus:border-indigo-800 focus:text-neutral-700 focus:shadow-[inset_0_0_0_1px_rgb(59,113,202)] focus:outline-none dark:border-neutral-600 dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:focus:border-primary"
-                                            aria-label="Search"
-                                            aria-describedby="button-addon2"/>
 
-                                    <button
-                                            class="input-group-text flex items-center whitespace-nowrap rounded px-3 py-1.5 text-center text-base font-normal text-neutral-700 dark:text-neutral-200"
-                                            id="basic-addon2">
-                                        <svg
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                viewBox="0 0 20 20"
-                                                fill="currentColor"
-                                                class="h-5 w-5 text-neutral-500 transition duration-200 hover:text-neutral-700">
-                                            <path
-                                                    fill-rule="evenodd"
-                                                    d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z"
-                                                    clip-rule="evenodd"/>
-                                        </svg>
-                                    </button>
-
-                                </form>
-                            </div>
-
-                            <button x-show="!searchVisible"
-                                    @click="searchVisible = !searchVisible"
-                                    class="input-group-text flex items-center whitespace-nowrap rounded px-3 py-1.5 text-center text-base font-normal text-neutral-700 dark:text-neutral-200"
-                                    id="basic-addon2">
-                                <p class="text-lg  text-neutral-500 transition duration-200 hover:text-neutral-700 hover:ease-in-out focus:text-neutral-700 disabled:text-black/30 motion-reduce:transition-none dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-zinc-400">
-                                    @lang('main.search')</p>
-                                <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        viewBox="0 0 20 20"
-                                        fill="currentColor"
-                                        class="h-5 w-5 text-neutral-500 transition duration-200 hover:text-neutral-700">
-                                    <path
-                                            fill-rule="evenodd"
-                                            d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z"
-                                            clip-rule="evenodd"/>
-                                </svg>
-
-                            </button>
-                        </div>
-                    </div>
-                </li>
-            </div>
 
         </ul>
     </nav>

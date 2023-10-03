@@ -16,8 +16,6 @@ class SearchController extends Controller
         $products = Product::query()->filter($filter)->paginate(4)->withQueryString();*/
 
 
-
-
         $title = $request['title'];
         $products = Product::where('title', 'like', '%' . $title . '%')->paginate(12);
         return view('product.index', compact('products'));

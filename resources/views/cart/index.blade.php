@@ -2,7 +2,7 @@
     <div class="container lg:w-2/3 xl:w-2/3 mx-auto  cart">
 
 
-        <h1 class="text-3xl font-bold mb-6">Your Cart Items</h1>
+        <h1 class="text-3xl font-bold mb-6">@lang('main.items')</h1>
 
         <div x-data="{cartItems: {{ json_encode(
                     $products->map(fn($product) => [
@@ -56,7 +56,7 @@
                                                 href="#"
                                                 @click.prevent="removeItemFromCart()"
                                                 class="text-indigo-600 hover:text-indigo-800"
-                                        >Remove</a
+                                        >@lang('main.delete')</a
                                         >
                                     </div>
                                 </div>
@@ -69,15 +69,15 @@
 
                     <div class="border-t border-gray-300 pt-4">
                         <div class="flex justify-between">
-                            <span class="font-semibold">Subtotal</span>
+                            <span class="font-semibold"> @lang('main.subtotal')</span>
                             <span id="cartTotal" class="text-xl" x-text="`$${cartTotal}`"></span>
                         </div>
                         <p class="text-gray-500 mb-6">
-                            Shipping and taxes calculated at checkout.
+                            @lang('main.ship')
                         </p>
 
                         <button type="submit" class=" inline-flex items-center text-white rounded shadow-md transition-colors mx-5 inline-block rounded bg-green-600 px-6 pb-2 pt-2.5 text-base font-medium leading-normal text-white shadow-[0_4px_9px_-4px_#14a44d] transition duration-150 ease-in-out hover:bg-success-600 hover:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] focus:bg-success-600 focus:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] focus:outline-none focus:ring-0 active:bg-success-700 active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(20,164,77,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)]">
-                            Proceed to Checkout
+                            @lang('main.proc')
                         </button>
                     </div>
                 </div>

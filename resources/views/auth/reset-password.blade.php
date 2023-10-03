@@ -4,14 +4,14 @@
         <form action="" method="post" class="w-[400px] mx-auto p-6 my-16">
             @csrf
             <h2 class="text-2xl font-semibold text-center mb-5">
-                Enter your Email to reset password
+                @lang('main.enter_mail')
             </h2>
             <p class="text-center text-gray-500 mb-6">
                 or
                 <a
-                        href="/src/login.html"
+                      href="{{ route('login') }}"
                         class="text-purple-600 hover:text-purple-500"
-                >login with existing account</a
+                >@lang('main.or_login')</a
                 >
             </p>
 
@@ -20,13 +20,13 @@
                         id="loginEmail"
                         type="email"
                         name="email"
-                        placeholder="Your email address"
+                        placeholder="{{ __('main.y_email') }}"
                 />
             </div>
             <button
                     class="btn-primary bg-emerald-500 hover:bg-emerald-600 active:bg-emerald-700 w-full"
             >
-                Submit
+                @lang('main.signup')
             </button>
         </form>
     </main>

@@ -101,7 +101,7 @@
                 <div class="text-xl font-bold mb-6">${{$product->price}}</div>
                 <div class=" mb-5">
                     <label for="quantity" class="block font-bold mr-4">
-                        Quantity:
+                       @lang('main.qt'):
                     </label>
                     <input
                             type="number"
@@ -131,7 +131,7 @@
                                 d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
                         />
                     </svg>
-                    Add to Cart
+                    @lang('main.add_to_cart')
                 </button>
                 <div class="mb-6" x-data="{expanded: false}">
                     <div
@@ -140,7 +140,7 @@
                             class="text-gray-500 wysiwyg-content"
                     >
                         <p class="block font-bold mr-4">
-                            Description:</p> {{ $product->description }}
+                            @lang('main.desc'):</p> {{ $product->description }}
                     </div>
 
                 </div>

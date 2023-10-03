@@ -44,9 +44,9 @@
                     alt="..." />
             <div
                     class="absolute inset-x-[15%] bottom-5 hidden py-5 text-center text-white md:block">
-                <h5 class="text-xl">First slide label</h5>
+                <h5 class="text-xl"> @lang('main.slider_desc')</h5>
                 <p>
-                    Some representative placeholder content for the first slide.
+                    @lang('main.slider_title')
                 </p>
             </div>
         </div>
@@ -61,9 +61,9 @@
                     alt="..." />
             <div
                     class="absolute inset-x-[15%] bottom-5 hidden py-5 text-center text-white md:block">
-                <h5 class="text-xl">Second slide label</h5>
+                <h5 class="text-xl">@lang('main.slider_desc2')</h5>
                 <p>
-                    Some representative placeholder content for the second slide.
+                    @lang('main.slider_title2')
                 </p>
             </div>
         </div>
@@ -78,9 +78,9 @@
                     alt="..." />
             <div
                     class="absolute inset-x-[15%] bottom-5 hidden py-5 text-center text-white md:block">
-                <h5 class="text-xl">Third slide label</h5>
+                <h5 class="text-xl">@lang('main.slider_title')</h5>
                 <p>
-                    Some representative placeholder content for the third slide.
+                    @lang('main.slider_desc')
                 </p>
             </div>
         </div>
