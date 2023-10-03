@@ -55,6 +55,7 @@ class Kernel extends HttpKernel
         'verified' => \App\Http\Middleware\EnsureEmailIsVerified::class,
         'guestOrVerified' => GuestOrVerified::class,
         'admin' => Admin::class,
+        'set_locale' => \App\Http\Middleware\SetLocale::class,
 
     ];
 }

@@ -4,7 +4,10 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-Route::middleware(['guestOrVerified'])->group(function () {
+Route::middleware(['guestOrVerified', 'set_locale'])->group(function () {
+    Route::get('locale/{locale}', [\App\Http\Controllers\LanguageController::class, 'changeLocale'])->name('locale');
+
+
     Route::get('/', function () {
         return view('welcome');
     });
