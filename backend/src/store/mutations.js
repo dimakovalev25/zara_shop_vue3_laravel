@@ -26,3 +26,14 @@ export function setProducts(state, [loading, data = null]) {
     }
     state.products.loading = loading;
 }
+export function setCategories(state, [loading, data = null]) {
+    if (data) {
+        state.categories = {
+            ...state.categories,
+            data: data.data,
+
+        }
+    }
+    state.categories.loading = loading;
+}
+

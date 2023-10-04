@@ -3,9 +3,6 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
-use Illuminate\Http\Resources\Json\ResourceCollection;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\URL;
 
 class ProductListResource extends JsonResource
 {
@@ -16,6 +13,7 @@ class ProductListResource extends JsonResource
             'id' => $this->id,
             'title' => $this->title,
             'image' => $this->image,
+            'category_id' => $this->category_id,
             'description' => $this->description,
             'image_url' => $this->image ?: null,
             'price' => $this->price,

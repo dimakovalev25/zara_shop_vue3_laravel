@@ -13,7 +13,7 @@ export default {
   methods: {
     logout(){
       const token = sessionStorage.getItem('TOKEN')
-      console.log(token)
+      // console.log(token)
       store.dispatch('logout')
           .then(() => {
             router.push({name: 'login'})

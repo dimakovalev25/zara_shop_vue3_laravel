@@ -14,5 +14,9 @@ export default {
         page: 1,
         limit: null,
         total: null
+    },
+    categories: {
+        loading: false,
+        data: [],
     }
 }

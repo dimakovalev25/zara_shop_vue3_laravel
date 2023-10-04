@@ -16,8 +16,6 @@ class Product extends Model
     use SoftDeletes;
     use Filterable;
 
-    protected $fillable = ['title', 'description', 'price', 'image', 'image_mime', 'image_size', 'created_by', 'updated_by'];
-
     protected $guarded = false;
 
     public function getSlugOptions() : SlugOptions

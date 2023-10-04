@@ -10,10 +10,30 @@
                     <CustomInput type="textarea" class="mb-2" v-model="product.description" label="Description"/>
                     <CustomInput type="number" class="mb-2" v-model="product.price" label="Price"/>
 
-                    <button type="submit"
-                            class="py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 ">
-                        Submit
-                    </button>
+                    <div>
+
+                        <label for="cat">Choose a category:</label>
+                    </div>
+                    <select class="block w-full px-3 mb-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                            v-model="product.category_id" id="cat">
+
+
+                        <option class="mb-2" selected>choose category
+                        </option>
+                        <option v-for="category of categories.data" :value="category.id">{{ category.title }}
+                        </option>
+
+
+                    </select>
+
+                    <div>
+                        <button type="submit"
+                                class="py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 ">
+                            Submit
+                        </button>
+                    </div>
+
+
                 </div>
 
 
@@ -173,13 +193,15 @@ import {PencilIcon} from "@heroicons/vue/20/solid/index.js";
 const perPage = ref(PRODUCTS_PER_PAGE);
 const search = ref('');
 const products = computed(() => store.state.products);
+const categories = computed(() => store.state.categories);
 
 
 const product = ref({
     title: null,
     image: null,
     description: null,
-    price: null
+    price: null,
+    category_id: null
 })
 
 const editedProduct = ref(null);
@@ -228,7 +250,7 @@ async function onEditSubmit() {
             getProducts();
         })
         .catch(res => {
-            console.log(res)
+            // console.log(res)
         })
         .finally(res => {
             editedProduct.value = null
@@ -238,11 +260,12 @@ async function onEditSubmit() {
 
 function editProduct(product) {
     editedProduct.value = {...product};
-    console.log(editedProduct.value)
+    // console.log(editedProduct.value)
 }
 
 onMounted(() => {
     getProducts();
+    getCategories()
 })
 
 function getForPage(ev, link) {
@@ -259,13 +282,14 @@ function onSubmit() {
             if (response.status === 201) {
                 store.dispatch('getProducts')
             }
-            getProducts();
+
         })
         .catch(res => {
             console.log(res)
         })
         .finally(err => {
             product.value = null
+            getProducts();
         })
 }
 
@@ -283,7 +307,13 @@ function getProducts(url = null) {
         search: search.value,
         perPage: perPage.value,
     });
-    console.log(perPage.value)
 
+
+}
+
+function getCategories(url = null) {
+    store.dispatch("getCategories", {
+        url
+    });
 }
 </script>

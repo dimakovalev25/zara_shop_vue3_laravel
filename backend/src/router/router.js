@@ -6,6 +6,7 @@ import Login from "../components/Login.vue";
 import AppLayout from "../components/AppLayout.vue";
 import Dashboard from "../views/Dashboard.vue";
 import Products from "../components/Products.vue";
+import Categories from "../components/Categories.vue";
 import Orders from "../components/Orders.vue";
 import Users from "../components/Users.vue";
 import Customers from "../components/Customers.vue";
@@ -13,7 +14,7 @@ import Reports from "../components/Reports.vue";
 import store from "../store/store.js";
 import NotFound from "../components/NotFound.vue";
 import Get from "../components/Get.vue";
-import TailWind from "../components/TailWind.vue";
+import Logout from "../components/Logout.vue";
 
 
 const routes =[
@@ -23,20 +24,14 @@ const routes =[
     },
 
     {
-        path: '/home',
-        name: 'home',
-        component: Home
-    },
-
-    {
-        path: '/tw',
-        name: 'tw',
-        component: TailWind
-    },
-    {
         path: '/get',
         name: 'get',
         component: Get
+    },
+    {
+        path: '/logout',
+        name: 'logout',
+        component: Logout
     },
     {
         path: '/login',
@@ -79,6 +74,11 @@ const routes =[
                 path: 'dashboard',
                 name: 'app.dashboard',
                 component: Dashboard
+            },
+            {
+                path: 'categories',
+                name: 'app.categories',
+                component: Categories
             },
             {
                 path: 'orders',

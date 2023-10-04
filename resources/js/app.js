@@ -62,7 +62,7 @@ document.addEventListener("alpine:init", async () => {
                         });
                     })
                     .catch(response => {
-                        console.log(response);
+                        // console.log(response);
                     })
             },
             removeItemFromCart() {

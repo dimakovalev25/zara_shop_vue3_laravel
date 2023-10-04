@@ -7,6 +7,7 @@ export function getUser({commit}, data) {
             return data;
         })
 }
+
 export function login({commit}, data) {
     return axiosClient.post('/login', data)
         .then(({data}) => {
@@ -15,6 +16,7 @@ export function login({commit}, data) {
             return data;
         })
 }
+
 export function logout({commit}) {
     return axiosClient.post('/logout')
         .then((response) => {
@@ -22,6 +24,9 @@ export function logout({commit}) {
             return response;
         })
 }
+
+
+//products
 export function getProduct({commit}, id) {
     return axiosClient.get(`/products/${id}`)
 }
@@ -30,7 +35,7 @@ export function getProducts({commit, state}, {url = null, search, perPage}) {
     commit('setProducts', [true])
     url = url || '/products'
     return axiosClient.get(url, {
-        params: {search,per_page: perPage}
+        params: {search, per_page: perPage}
     })
         .then((response) => {
             commit('setProducts', [false, response.data])
@@ -39,7 +44,7 @@ export function getProducts({commit, state}, {url = null, search, perPage}) {
             commit('setProducts', [false])
         })
 }
-export function  createProduct({commit}, product) {
+export function createProduct({commit}, product) {
 
     if (product.image instanceof File) {
         const form = new FormData();
@@ -47,11 +52,11 @@ export function  createProduct({commit}, product) {
         form.append('image', product.image);
         form.append('description', product.description);
         form.append('price', product.price);
+        form.append('category_id', product.category_id);
         product = form;
     }
     return axiosClient.post('/products', product)
 }
-
 export function updateProduct({commit}, product) {
     const id = product.id
     if (product.image instanceof File) {
@@ -68,4 +73,36 @@ export function updateProduct({commit}, product) {
 }
 export function deleteProduct({commit}, id) {
     axiosClient.delete(`/products/${id}`)
+}
+
+//categories
+export function getCategory({commit}, id) {
+    return axiosClient.get(`/categories/${id}`)
+}
+
+export function getCategories({commit, state}, {url = null}) {
+    commit('setCategories', [true])
+    url = url || '/categories'
+    return axiosClient.get(url, {})
+        .then((response) => {
+            commit('setCategories', [false, response.data])
+        })
+        .catch(() => {
+            commit('setCategories', [false])
+        })
+}
+
+export function createCategory({commit}, category) {
+
+
+/*    const form = new FormData();
+    form.append('title', category.title);
+    form.append('description', category.description);
+    category = form;*/
+
+    return axiosClient.post('/categories', category)
+}
+
+export function deleteCategory({commit}, id) {
+    axiosClient.delete(`/categories/${id}`)
 }
