@@ -13,7 +13,7 @@ class Category extends Model
     use SoftDeletes;
     protected $guarded = false;
 
-    public function category()
+    public function product()
     {
         return $this->belongsTo(Product::class);
     }

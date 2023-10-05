@@ -18,6 +18,8 @@ Route::middleware(['auth:sanctum', 'admin'])->group(function () {
 
     Route::apiResource('products', ProductController::class);
     Route::apiResource('categories', CategoryController::class);
+
+    Route::get('/categories/{categoryId}', 'CategoryController@getCategoryName');
 });
 
 Route::post('/login', [AuthController::class, 'login']);

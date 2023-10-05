@@ -9,6 +9,17 @@ use App\Models\Category;
 
 class CategoryController extends Controller
 {
+
+    public function getCategoryName($categoryId)
+    {
+        $category = Category::find($categoryId);
+
+        if (!$category) {
+            return response()->json(['error' => 'Категория не найдена'], 404);
+        }
+
+        return response()->json(['title' => $category->title]);
+    }
     public function index()
     {
 

@@ -27,6 +27,16 @@ export function logout({commit}) {
 
 
 //products
+
+export  function getCategoryName(categoryId) {
+    return axiosClient.get(`/api/categories/${categoryId}`)
+        .then(response => {
+            console.log(response.data.name);
+        })
+        .catch(error => {
+            console.error(error);
+        });
+}
 export function getProduct({commit}, id) {
     return axiosClient.get(`/products/${id}`)
 }

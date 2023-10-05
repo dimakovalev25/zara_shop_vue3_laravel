@@ -92,6 +92,7 @@
                     <th class="border-b-2 p-2 text-left">Image</th>
                     <th class="border-b-2 p-2 text-left">Title</th>
                     <th class="border-b-2 p-2 text-left">Price</th>
+                    <th class="border-b-2 p-2 text-left">Category</th>
                     <th class="border-b-2 p-2 text-left">Actions</th>
                     <th class="border-b-2 p-2 text-left">Last Updated At</th>
                 </tr>
@@ -109,6 +110,14 @@
                     <td class="border-b p-2">
                         {{ product.price }}
                     </td>
+
+                    <td class="border-b p-2">
+                        {{ product.category_id }}
+                    </td>
+
+<!--                    <td class="border-b p-2">
+                        {{ getName(product.category_id) }}
+                    </td>-->
                     <td class="border-b p-2">
                         <button
                                 :class="[
@@ -190,6 +199,7 @@ import CustomInput from "./core/CustomInput.vue";
 import {TrashIcon} from "@heroicons/vue/20/solid/index.js";
 import {PencilIcon} from "@heroicons/vue/20/solid/index.js";
 
+
 const perPage = ref(PRODUCTS_PER_PAGE);
 const search = ref('');
 const products = computed(() => store.state.products);
@@ -203,6 +213,20 @@ const product = ref({
     price: null,
     category_id: null
 })
+
+function getName(id) {
+    store.dispatch('getCategoryName' , id)
+}
+
+/* function getCategoryName(categoryId) {
+    axios.get(`/api/categories/${categoryId}`)
+        .then(response => {
+            console.log(response.data.name);
+        })
+        .catch(error => {
+            console.error(error);
+        });
+}*/
 
 const editedProduct = ref(null);
 
