@@ -80,10 +80,9 @@ export function getCategory({commit}, id) {
     return axiosClient.get(`/categories/${id}`)
 }
 
-export function getCategories({commit, state}, {url = null}) {
+export function getCategories({commit, state}, {}) {
     commit('setCategories', [true])
-    url = url || '/categories'
-    return axiosClient.get(url, {})
+    return axiosClient.get('/categories', {})
         .then((response) => {
             commit('setCategories', [false, response.data])
         })
@@ -93,16 +92,11 @@ export function getCategories({commit, state}, {url = null}) {
 }
 
 export function createCategory({commit}, category) {
-
-
-/*    const form = new FormData();
-    form.append('title', category.title);
-    form.append('description', category.description);
-    category = form;*/
-
     return axiosClient.post('/categories', category)
 }
-
-export function deleteCategory({commit}, id) {
-    axiosClient.delete(`/categories/${id}`)
+export function updateCategory({commit}, category) {
+    return axiosClient.put(`/categories/${category.id}`, category)
+}
+export function deleteCategory({commit}, category) {
+    axiosClient.delete(`/categories/${category.id}`)
 }

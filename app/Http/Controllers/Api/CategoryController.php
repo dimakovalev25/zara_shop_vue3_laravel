@@ -14,9 +14,6 @@ class CategoryController extends Controller
     public function index()
     {
 
-        /*$data = Category::all();
-        return $data;*/
-
         $query = Category::all();
         return CategoryResource::collection($query);
     }
@@ -31,13 +28,12 @@ class CategoryController extends Controller
 
     }
 
-    public function show(Category $category)
-    {
-
-    }
     public function update(CategoryRequest $request, Category $category)
     {
+        $data = $request->validated();
+        $category->update($data);
 
+        return new CategoryResource($category);
     }
 
     public function destroy(Category $category)

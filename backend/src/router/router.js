@@ -6,7 +6,7 @@ import Login from "../components/Login.vue";
 import AppLayout from "../components/AppLayout.vue";
 import Dashboard from "../views/Dashboard.vue";
 import Products from "../components/Products.vue";
-import Categories from "../components/Categories.vue";
+// import Categories from "../components/Categories.vue";
 import Orders from "../components/Orders.vue";
 import Users from "../components/Users.vue";
 import Customers from "../components/Customers.vue";
@@ -15,6 +15,7 @@ import store from "../store/store.js";
 import NotFound from "../components/NotFound.vue";
 import Get from "../components/Get.vue";
 import Logout from "../components/Logout.vue";
+import Categories from "../views/Categories/Categories.vue";
 
 
 const routes =[
