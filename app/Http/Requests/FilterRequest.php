@@ -16,8 +16,6 @@ class FilterRequest extends FormRequest
     {
         return [
             'title'=> '',
-
-
         ];
     }
 }

@@ -2,17 +2,21 @@
         x-data="{
         mobileMenuOpen: false,
         cartItemsCount: {{ \App\Http\Helpers\Cart::getCartItemsCount() }},
+
         watchlistItems: 0,
         scrolling: false,
+        test: 'test!!!!!!!!'
     }"
         @cart-change.window="cartItemsCount = $event.detail.count"
         @scroll.window="scrolling = (window.scrollY > 0)"
         :class="{ 'h-20 p-3': !scrolling, 'h-16': scrolling }"
         class="flex justify-between bg-white shadow-md text-black fixed-header transition-all duration-300 ease-in-out myheader"
 >
+
+
     {{--    logo--}}
     <div class="logo">
-{{--        <a href="/products" class="text-3xl block py-navbar-item pl-5"> Apples shop </a>--}}
+        {{--        <a href="/products" class="text-3xl block py-navbar-item pl-5"> Apples shop </a>--}}
         <a href="/products" class="text-3xl block py-navbar-item pl-5">@lang('main.online_shop') </a>
     </div>
 
@@ -21,17 +25,105 @@
 
         <ul class="grid grid-flow-col gap-6">
 
+
+
+            <li class="" data-te-nav-item-ref>
+                <a
+                        class="text-lg flex text-neutral-500 transition duration-200 hover:text-neutral-700 hover:ease-in-out focus:text-neutral-700 disabled:text-black/30 motion-reduce:transition-none dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-zinc-400"
+                        data-te-nav-link-ref
+                        href="{{route('locale', __('main.set_lang'))}}"
+                >@lang('main.lang')
+
+                    {{--                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                             stroke="currentColor" class="ml-2 w-5 h-5 mt-1">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                  d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99"/>
+
+
+
+                                        </svg>--}}
+
+                    @if(App::getLocale() === 'ru')
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="0.9"
+                             stroke="currentColor" class=" w-12 h-8 mt-[-2px] ">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                  d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99"/>
+                            <text font-size="8" x="7" y="15" fill="currentColor">En</text>
+                        </svg>
+                    @else
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="0.9"
+                             stroke="currentColor" class=" w-12 h-8 mt-[-2px]">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                  d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99"/>
+                            <text font-size="8" x="7" y="15" fill="red">Ru</text>
+                        </svg>
+
+                    @endif
+                </a>
+            </li>
+
+            <li class="">
+
+
+                <div x-data="{
+    categories: {{ json_encode(\App\Http\Helpers\Categories::getCategories()) }}
+}" class="relative " data-te-dropdown-hover-toggle-ref>
+                    <button
+
+                            class="flex items-center text-neutral-500 whitespace-nowrap bg-white text-lg font-medium  shadow-[0_4px_9px_-4px_#fbfbfb] transition duration-150 ease-in-osut hover:bg-neutral-100 hover:shadow-[0_8px_9px_-4px_rgba(251,251,251,0.3),0_4px_18px_0_rgba(251,251,251,0.2)] focus:bg-neutral-100 focus:shadow-[0_8px_9px_-4px_rgba(251,251,251,0.3),0_4px_18px_0_rgba(251,251,251,0.2)] focus:outline-none focus:ring-0 active:bg-neutral-200 active:shadow-[0_8px_9px_-4px_rgba(251,251,251,0.3),0_4px_18px_0_rgba(251,251,251,0.2)] motion-reduce:transition-none hover:text-neutral-700"
+
+
+                            type="button"
+                            id="dropdownMenuButton9"
+                            data-te-dropdown-toggle-ref
+                            aria-expanded="false"
+                            data-te-ripple-init>
+
+                        @lang('main.categories')
+                        <span class="ml-2 w-2">
+      <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+              class="h-5 w-5">
+        <path
+                fill-rule="evenodd"
+                d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                clip-rule="evenodd"/>
+      </svg>
+    </span>
+                    </button>
+                    <ul
+                            class="absolute z-[1000] float-left m-0 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg dark:bg-neutral-700 [&[data-te-dropdown-show]]:block"
+                            aria-labelledby="dropdownMenuButton9"
+                            data-te-dropdown-menu-ref>
+
+
+                        <li >
+                            <template x-for="category in categories" :key="category">
+
+                                <a class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-lg  font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600"
+                                   :href="category.id"
+                                   x-text="category.title" data-te-dropdown-item-ref></a>
+
+                            </template>
+
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
             <div x-data="{ searchVisible: false }">
-                <li class="w-50" data-te-nav-item-ref>
+                <li >
                     <div class="mt-[-5px]">
-                        <div class="">
+                        <div >
                             <div x-show="searchVisible">
                                 <form class=" flex w-full flex-wrap items-stretch" method="GET"
                                       action="{{route("search")}}">
                                     <input
                                             name="title"
                                             type="search"
-                                            class="relative m-0 block h-[40px] w-[1px] min-w-0 flex-auto rounded border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-neutral-700 outline-none transition duration-200 ease-in-out focus:z-[3] focus:border-indigo-800 focus:text-neutral-700 focus:shadow-[inset_0_0_0_1px_rgb(59,113,202)] focus:outline-none dark:border-neutral-600 dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:focus:border-primary"
+                                            class="relative m-0 block flex-auto rounded border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-neutral-700 outline-none transition duration-200 ease-in-out focus:z-[3] focus:border-indigo-800 focus:text-neutral-700 focus:shadow-[inset_0_0_0_1px_rgb(59,113,202)] focus:outline-none dark:border-neutral-600 dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:focus:border-primary"
                                             aria-label="Search"
                                             aria-describedby="button-addon2"/>
 
@@ -76,163 +168,59 @@
                 </li>
             </div>
 
-            <li class="" data-te-nav-item-ref>
-                <a
-                        class="text-lg flex text-neutral-500 transition duration-200 hover:text-neutral-700 hover:ease-in-out focus:text-neutral-700 disabled:text-black/30 motion-reduce:transition-none dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-zinc-400"
-                        data-te-nav-link-ref
-                        href="{{route('locale', __('main.set_lang'))}}"
-                >@lang('main.lang')
-
-                    {{--                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                             stroke="currentColor" class="ml-2 w-5 h-5 mt-1">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                  d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99"/>
+            {{--     <li class="">
 
 
+                     <div class="relative " data-te-dropdown-hover-toggle-ref>
+                         <button
 
-                                        </svg>--}}
-
-                    @if(App::getLocale() === 'ru')
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="0.9" stroke="currentColor" class=" w-12 h-8 mt-[-2px] ">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99"/>
-                            <text font-size="8" x="7" y="15" fill="currentColor">En</text>
-                        </svg>
-                    @else
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="0.9" stroke="currentColor" class=" w-12 h-8 mt-[-2px]">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99"/>
-                            <text font-size="8"  x="7" y="15" fill="red">Ru</text>
-                        </svg>
-
-                    @endif
-                </a>
-            </li>
-
-            <li class="">
-{{--                <x-castom_dropdown ></x-castom_dropdown>@lang('main.info')--}}
-                <div class="relative " data-te-dropdown-hover-toggle-ref>
-                    <button
-
-                            class="flex items-center text-neutral-500 whitespace-nowrap bg-white text-lg font-medium  shadow-[0_4px_9px_-4px_#fbfbfb] transition duration-150 ease-in-osut hover:bg-neutral-100 hover:shadow-[0_8px_9px_-4px_rgba(251,251,251,0.3),0_4px_18px_0_rgba(251,251,251,0.2)] focus:bg-neutral-100 focus:shadow-[0_8px_9px_-4px_rgba(251,251,251,0.3),0_4px_18px_0_rgba(251,251,251,0.2)] focus:outline-none focus:ring-0 active:bg-neutral-200 active:shadow-[0_8px_9px_-4px_rgba(251,251,251,0.3),0_4px_18px_0_rgba(251,251,251,0.2)] motion-reduce:transition-none hover:text-neutral-700"
+                                 class="flex items-center text-neutral-500 whitespace-nowrap bg-white text-lg font-medium  shadow-[0_4px_9px_-4px_#fbfbfb] transition duration-150 ease-in-osut hover:bg-neutral-100 hover:shadow-[0_8px_9px_-4px_rgba(251,251,251,0.3),0_4px_18px_0_rgba(251,251,251,0.2)] focus:bg-neutral-100 focus:shadow-[0_8px_9px_-4px_rgba(251,251,251,0.3),0_4px_18px_0_rgba(251,251,251,0.2)] focus:outline-none focus:ring-0 active:bg-neutral-200 active:shadow-[0_8px_9px_-4px_rgba(251,251,251,0.3),0_4px_18px_0_rgba(251,251,251,0.2)] motion-reduce:transition-none hover:text-neutral-700"
 
 
-                            type="button"
-                            id="dropdownMenuButton9"
-                            data-te-dropdown-toggle-ref
-                            aria-expanded="false"
-                            data-te-ripple-init>
+                                 type="button"
+                                 id="dropdownMenuButton9"
+                                 data-te-dropdown-toggle-ref
+                                 aria-expanded="false"
+                                 data-te-ripple-init>
 
-                        @lang('main.categories')
-                        <span class="ml-2 w-2">
-      <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-              class="h-5 w-5">
-        <path
-                fill-rule="evenodd"
-                d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
-                clip-rule="evenodd" />
-      </svg>
-    </span>
-                    </button>
-                    <ul
-                            class="absolute z-[1000] float-left m-0 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg dark:bg-neutral-700 [&[data-te-dropdown-show]]:block"
-                            aria-labelledby="dropdownMenuButton9"
-                            data-te-dropdown-menu-ref>
-                        <li>
-                            <a
-                                    class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-lg  font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600"
-                                    href="#"
-                                    data-te-dropdown-item-ref
-                            >action</a
-                            >
-                        </li>
-                        <li>
-                            <a
-                                    class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-lg  font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600"
-                                    href="#"
-                                    data-te-dropdown-item-ref
-                            >another 2</a
-                            >
-                        </li>
+                             @lang('main.info')
+                             <span class="ml-2 w-2">
+           <svg
+                   xmlns="http://www.w3.org/2000/svg"
+                   viewBox="0 0 20 20"
+                   fill="currentColor"
+                   class="h-5 w-5">
+             <path
+                     fill-rule="evenodd"
+                     d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                     clip-rule="evenodd"/>
+           </svg>
+         </span>
+                         </button>
+                         <ul
+                                 class="absolute z-[1000] float-left m-0 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg dark:bg-neutral-700 [&[data-te-dropdown-show]]:block"
+                                 aria-labelledby="dropdownMenuButton9"
+                                 data-te-dropdown-menu-ref>
+                             <li>
+                                 <a
+                                         class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-lg  font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600"
+                                         href="#"
+                                         data-te-dropdown-item-ref
+                                 >action</a
+                                 >
+                             </li>
+                             <li>
+                                 <a
+                                         class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-lg  font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600"
+                                         href="#"
+                                         data-te-dropdown-item-ref
+                                 >another 2</a
+                                 >
+                             </li>
 
-                    </ul>
-                </div>
-            </li>
-
-            <li class="">
-{{--                <x-castom_dropdown></x-castom_dropdown>@lang('main.info')--}}
-                <div class="relative " data-te-dropdown-hover-toggle-ref>
-                    <button
-
-                            class="flex items-center text-neutral-500 whitespace-nowrap bg-white text-lg font-medium  shadow-[0_4px_9px_-4px_#fbfbfb] transition duration-150 ease-in-osut hover:bg-neutral-100 hover:shadow-[0_8px_9px_-4px_rgba(251,251,251,0.3),0_4px_18px_0_rgba(251,251,251,0.2)] focus:bg-neutral-100 focus:shadow-[0_8px_9px_-4px_rgba(251,251,251,0.3),0_4px_18px_0_rgba(251,251,251,0.2)] focus:outline-none focus:ring-0 active:bg-neutral-200 active:shadow-[0_8px_9px_-4px_rgba(251,251,251,0.3),0_4px_18px_0_rgba(251,251,251,0.2)] motion-reduce:transition-none hover:text-neutral-700"
-
-
-                            type="button"
-                            id="dropdownMenuButton9"
-                            data-te-dropdown-toggle-ref
-                            aria-expanded="false"
-                            data-te-ripple-init>
-
-                        @lang('main.info')
-                        <span class="ml-2 w-2">
-      <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-              class="h-5 w-5">
-        <path
-                fill-rule="evenodd"
-                d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
-                clip-rule="evenodd" />
-      </svg>
-    </span>
-                    </button>
-                    <ul
-                            class="absolute z-[1000] float-left m-0 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg dark:bg-neutral-700 [&[data-te-dropdown-show]]:block"
-                            aria-labelledby="dropdownMenuButton9"
-                            data-te-dropdown-menu-ref>
-                        <li>
-                            <a
-                                    class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-lg  font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600"
-                                    href="#"
-                                    data-te-dropdown-item-ref
-                            >action</a
-                            >
-                        </li>
-                        <li>
-                            <a
-                                    class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-lg  font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600"
-                                    href="#"
-                                    data-te-dropdown-item-ref
-                            >another 2</a
-                            >
-                        </li>
-
-                    </ul>
-                </div>
-            </li>
-
-{{--            <li class="" data-te-nav-item-ref>
-                <a
-                        class="text-lg flex text-neutral-500 transition duration-200 hover:text-neutral-700 hover:ease-in-out focus:text-neutral-700 disabled:text-black/30 motion-reduce:transition-none dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-zinc-400"
-                        href="#"
-                        data-te-nav-link-ref
-                >Русский язык
-
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                         stroke="currentColor" class="ml-2 w-5 h-5 mt-1">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                              d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99"/>
-                    </svg>
-
-
-                </a>
-            </li>
-            --}}
-
-
-
+                         </ul>
+                     </div>
+                 </li>--}}
 
         </ul>
     </nav>
@@ -345,7 +333,7 @@
                                     </svg>
                                     <p
                                             class=""
-                                            href="#"
+
                                             data-te-dropdown-item-ref
                                     >@lang('main.logout')
                                     </p>
@@ -403,125 +391,123 @@
     {{--            менюшка мобильная--}}
     <div class="block fixed z-10 top-0 bottom-0 height h-full w-[180px] transition-all bg-gray-300 md:hidden pl-6 pr-4 pt-10"
          :class="mobileMenuOpen ? 'left-0' : '-left-[180px]'">
-        <ul>
+        @if(!Auth::guest())
+            <ul>
+                <li class="pb-3" data-te-nav-item-ref>
+                    <a
+                            class="text-lg  text-neutral-500 transition duration-200 hover:text-neutral-700 hover:ease-in-out focus:text-neutral-700 disabled:text-black/30 motion-reduce:transition-none dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-zinc-400"
+                            href="{{route('locale', __('main.set_lang'))}}"
+                            data-te-nav-link-ref
+                    >@lang('main.lang')</a
+                    >
+                </li>
 
 
-            @if(!Auth::guest())
-                <ul>
-                    <li class="pb-3" data-te-nav-item-ref>
-                        <a
-                                class="text-lg  text-neutral-500 transition duration-200 hover:text-neutral-700 hover:ease-in-out focus:text-neutral-700 disabled:text-black/30 motion-reduce:transition-none dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-zinc-400"
-                                href="{{route('locale', __('main.set_lang'))}}"
-                                data-te-nav-link-ref
-                        >@lang('main.lang')</a
-                        >
-                    </li>
+                <li class="pb-3" data-te-nav-item-ref>
+                    <a
+                            class="text-lg  text-neutral-500 transition duration-200 hover:text-neutral-700 hover:ease-in-out focus:text-neutral-700 disabled:text-black/30 motion-reduce:transition-none dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-zinc-400"
+                            href="#"
+                            data-te-nav-link-ref
+                    >@lang('main.product')</a
+                    >
+                </li>
+                <li class="pb-3" data-te-nav-item-ref>
+                    <a
+                            class="text-lg  text-neutral-500 transition duration-200 hover:text-neutral-700 hover:ease-in-out focus:text-neutral-700 disabled:text-black/30 motion-reduce:transition-none dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-zinc-400"
+                            href="#"
+                            data-te-nav-link-ref
+                    >@lang('main.info')</a
+                    >
+                </li>
+
+                <li class="pb-3">
+                    <a
+                            class="text-lg  text-neutral-500 transition duration-200 hover:text-neutral-700 hover:ease-in-out focus:text-neutral-700 disabled:text-black/30 motion-reduce:transition-none dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-zinc-400"
+                            href="#"
+                            data-te-dropdown-item-ref
+                    >@lang('main.my_profile')</a
+                    >
+                </li>
+                <li class="pb-3">
+                    <a
+                            class="text-lg  text-neutral-500 transition duration-200 hover:text-neutral-700 hover:ease-in-out focus:text-neutral-700 disabled:text-black/30 motion-reduce:transition-none dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-zinc-400"
+                            href="#"
+                            data-te-dropdown-item-ref
+                    >@lang('main.my_orders')</a
+                    >
+                </li>
+                <li class="pt-3">
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <button class="flex block text-lg  text-red-500 transition duration-200 hover:text-red-700 hover:ease-in-out focus:text-neutral-700 disabled:text-black/30 motion-reduce:transition-none dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-zinc-400"
+                                type="submit">
+                            <p
+                                    class=""
+                                    data-te-dropdown-item-ref
+                            >@lang('main.logout')
+                            </p>
 
 
-                    <li class="pb-3" data-te-nav-item-ref>
-                        <a
-                                class="text-lg  text-neutral-500 transition duration-200 hover:text-neutral-700 hover:ease-in-out focus:text-neutral-700 disabled:text-black/30 motion-reduce:transition-none dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-zinc-400"
-                                href="#"
-                                data-te-nav-link-ref
-                        >@lang('main.product')</a
-                        >
-                    </li>
-                    <li class="pb-3" data-te-nav-item-ref>
-                        <a
-                                class="text-lg  text-neutral-500 transition duration-200 hover:text-neutral-700 hover:ease-in-out focus:text-neutral-700 disabled:text-black/30 motion-reduce:transition-none dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-zinc-400"
-                                href="#"
-                                data-te-nav-link-ref
-                        >@lang('main.info')</a
-                        >
-                    </li>
+                        </button>
+                    </form>
 
-                    <li class="pb-3">
-                        <a
-                                class="text-lg  text-neutral-500 transition duration-200 hover:text-neutral-700 hover:ease-in-out focus:text-neutral-700 disabled:text-black/30 motion-reduce:transition-none dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-zinc-400"
-                                href="#"
-                                data-te-dropdown-item-ref
-                        >@lang('main.my_profile')</a
-                        >
-                    </li>
-                    <li class="pb-3">
-                        <a
-                                class="text-lg  text-neutral-500 transition duration-200 hover:text-neutral-700 hover:ease-in-out focus:text-neutral-700 disabled:text-black/30 motion-reduce:transition-none dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-zinc-400"
-                                href="#"
-                                data-te-dropdown-item-ref
-                        >@lang('main.my_orders')</a
-                        >
-                    </li>
-                    <li class="pt-3">
-                        <form method="POST" action="{{ route('logout') }}">
-                            @csrf
-                            <button class="flex block text-lg  text-red-500 transition duration-200 hover:text-red-700 hover:ease-in-out focus:text-neutral-700 disabled:text-black/30 motion-reduce:transition-none dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-zinc-400"
-                                    type="submit">
-                                <p
-                                        class=""
-                                        href="#"
-                                        data-te-dropdown-item-ref
-                                >@lang('main.logout')
-                                </p>
+                </li>
+
+            </ul>
+
+        @else
+            <ul class="">
 
 
-                            </button>
-                        </form>
+                <li class="pb-3">
+                    <a
+                            href="{{route('login')}}"
+                            class="flex block text-lg  text-green-700 transition duration-200 hover:text-green-800 hover:ease-in-out focus:text-neutral-700 disabled:text-black/30 motion-reduce:transition-none dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-zinc-400"
+                    >
+                        @lang('main.login')
+                    </a>
+                </li>
 
-                    </li>
+                <li class="pb-6">
+                    <a
+                            href="{{route('register')}}"
+                            class="flex block text-lg  text-green-700 transition duration-200 hover:text-green-800 hover:ease-in-out focus:text-neutral-700 disabled:text-black/30 motion-reduce:transition-none dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-zinc-400"
+                    >
+                        @lang('main.register')
+                    </a>
+                </li>
 
-                </ul>
+                <li class="pb-3" data-te-nav-item-ref>
+                    <a
+                            class="text-lg  text-neutral-500 transition duration-200 hover:text-neutral-700 hover:ease-in-out focus:text-neutral-700 disabled:text-black/30 motion-reduce:transition-none dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-zinc-400"
+                            href="{{route('locale', __('main.set_lang'))}}"
+                            data-te-nav-link-ref
+                    >   @lang('main.lang')</a
+                    >
+                </li>
 
-            @else
-                <ul class="">
-
-
-                    <li class="pb-3">
-                        <a
-                                href="{{route('login')}}"
-                                class="flex block text-lg  text-green-700 transition duration-200 hover:text-green-800 hover:ease-in-out focus:text-neutral-700 disabled:text-black/30 motion-reduce:transition-none dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-zinc-400"
-                        >
-                            @lang('main.login')
-                        </a>
-                    </li>
-
-                    <li class="pb-6">
-                        <a
-                                href="{{route('register')}}"
-                                class="flex block text-lg  text-green-700 transition duration-200 hover:text-green-800 hover:ease-in-out focus:text-neutral-700 disabled:text-black/30 motion-reduce:transition-none dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-zinc-400"
-                        >
-                            @lang('main.register')
-                        </a>
-                    </li>
-
-                    <li class="pb-3" data-te-nav-item-ref>
-                        <a
-                                class="text-lg  text-neutral-500 transition duration-200 hover:text-neutral-700 hover:ease-in-out focus:text-neutral-700 disabled:text-black/30 motion-reduce:transition-none dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-zinc-400"
-                                href="{{route('locale', __('main.set_lang'))}}"
-                                data-te-nav-link-ref
-                        >   @lang('main.lang')</a
-                        >
-                    </li>
-
-                    <li class="pb-3" data-te-nav-item-ref>
-                        <a
-                                class="text-lg  text-neutral-500 transition duration-200 hover:text-neutral-700 hover:ease-in-out focus:text-neutral-700 disabled:text-black/30 motion-reduce:transition-none dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-zinc-400"
-                                href="#"
-                                data-te-nav-link-ref
-                        >   @lang('main.product')</a
-                        >
-                    </li>
-                    <li class="pb-3" data-te-nav-item-ref>
-                        <a
-                                class="text-lg  text-neutral-500 transition duration-200 hover:text-neutral-700 hover:ease-in-out focus:text-neutral-700 disabled:text-black/30 motion-reduce:transition-none dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-zinc-400"
-                                href="#"
-                                data-te-nav-link-ref
-                        >   @lang('main.info')</a>
-                    </li>
+                <li class="pb-3" data-te-nav-item-ref>
+                    <a
+                            class="text-lg  text-neutral-500 transition duration-200 hover:text-neutral-700 hover:ease-in-out focus:text-neutral-700 disabled:text-black/30 motion-reduce:transition-none dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-zinc-400"
+                            href="#"
+                            data-te-nav-link-ref
+                    >   @lang('main.product')</a
+                    >
+                </li>
+                <li class="pb-3" data-te-nav-item-ref>
+                    <a
+                            class="text-lg  text-neutral-500 transition duration-200 hover:text-neutral-700 hover:ease-in-out focus:text-neutral-700 disabled:text-black/30 motion-reduce:transition-none dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-zinc-400"
+                            href="#"
+                            data-te-nav-link-ref
+                    >   @lang('main.info')</a>
+                </li>
 
 
-                    @endif
+                @endif
 
-                </ul>
+            </ul>
+
+
     </div>
 
     {{--    button бутерброд--}}
@@ -544,4 +530,5 @@
             />
         </svg>
     </button>
+
 </header>

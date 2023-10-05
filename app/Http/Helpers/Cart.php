@@ -24,21 +24,6 @@ class Cart
         }
     }
 
-    /*public static function getCartItems()
-    {
-        $request = \request();
-        $user = $request->user();
-        if ($user) {
-            $collection = CartItem::where('user_id', $user->id)->get();
-            $array = $collection->toArray();
-            return Arr::map(
-                $array,
-                fn($item) => ['product_id' => $item->product_id, 'quantity' => $item->quantity]
-            );
-        } else {
-            return json_decode($request->cookie('cart_items', '[]'), true);
-        }
-    }*/
     public static function getCartItems()
     {
         $request = \request();
@@ -65,7 +50,6 @@ class Cart
             0
         );
     }
-
 
     public static function getCookieCartItems()
     {

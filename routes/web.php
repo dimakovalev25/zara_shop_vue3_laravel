@@ -17,6 +17,8 @@ Route::middleware(['guestOrVerified', 'set_locale'])->group(function () {
     });
 
     Route::get('/search', [\App\Http\Controllers\SearchController::class, 'index'])->name('search');
+    Route::get('/{category}', [\App\Http\Controllers\SearchController::class, 'searchCategory'])->name('searchCategory')->where('category', '[0-9]+');
+
 
     Route::get('/products', [\App\Http\Controllers\ProductController::class, 'index'])->name('products');
     Route::get('/product/{product}', [\App\Http\Controllers\ProductController::class, 'show'])->name('product');

@@ -50,6 +50,12 @@ document.addEventListener("alpine:init", async () => {
         },
     }));
 
+    Alpine.data("categories", () => ({
+        categories: 'categories_TEST'
+
+
+    }));
+
     Alpine.data("productItem", (product) => {
         return {
             product,

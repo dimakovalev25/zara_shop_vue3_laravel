@@ -21,4 +21,12 @@ class SearchController extends Controller
         return view('product.index', compact('products'));
 
     }
+
+    public function searchCategory(FilterRequest $request,  $category)
+    {
+
+        $products = Product::where('category_id', '=' , $category)->paginate(12);
+        return view('product.index', compact('products'));
+
+    }
 }
