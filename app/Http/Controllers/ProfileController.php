@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ProfileUpdateRequest;
+use App\Http\Requests\OrderApproveRequest;
+use App\Models\Country;
+use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -11,9 +13,25 @@ use Illuminate\View\View;
 
 class ProfileController extends Controller
 {
-    /**
-     * Display the user's profile form.
-     */
+
+    public function approve(OrderApproveRequest $request)
+    {
+        $data = $request->validated();
+        $request->session()->flash('flash_message', 'The order has been sent, our manager will contact you.');
+        return view('approve.index');
+    }
+    public function view(Request $request)
+    {
+        $user_auth = Auth::user();
+        $id = $user_auth->id;
+        $user = User::find($id);
+        $customer = $user->customer;
+        $customer_address = $customer->customer_address;
+        $countries = Country::query()->orderBy('name')->get();
+        return view('layouts.profile', compact('user', 'countries', 'customer', 'customer_address'));
+
+    }
+
     public function edit(Request $request): View
     {
         return view('profile.edit', [
@@ -21,9 +39,6 @@ class ProfileController extends Controller
         ]);
     }
 
-    /**
-     * Update the user's profile information.
-     */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
         $request->user()->fill($request->validated());
@@ -37,9 +52,6 @@ class ProfileController extends Controller
         return Redirect::route('profile.edit')->with('status', 'profile-updated');
     }
 
-    /**
-     * Delete the user's account.
-     */
     public function destroy(Request $request): RedirectResponse
     {
         $request->validateWithBag('userDeletion', [

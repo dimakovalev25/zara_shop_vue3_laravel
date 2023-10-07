@@ -1,6 +1,15 @@
 <?php
 
 return [
+    'update' => 'Update',
+    'ship_address' => 'Shipping address',
+    'zipcode' => 'Zipcode',
+    'area' => 'Area',
+    'city' => 'City',
+    'street' => 'Street, house and apartment number',
+
+
+
     'online_shop' => 'Online shop Apple',
     'goods' => 'Products',
     'categories' => 'Categories',
@@ -38,9 +47,14 @@ return [
 
 
     'y_pass' => 'Your password',
+    'new_pass' => 'New password',
+    'new_pass2' => 'Repeat new password',
     'y_name' => 'Your name',
+    'y_phone' => 'Your phone',
     'y_email' => 'Your email address',
     'y_pass2' => 'Repeat password',
+    'y_full_name'=>'Your Full First Name and Second Name',
+    'bel'=>'Belarus',
 
     'logout' => 'Logout',
     'register' => 'Register',

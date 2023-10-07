@@ -40,6 +40,11 @@ body {
     font-family: 'Poppins', sans-serif;
 }
 
+.test {
+    outline: none !important;
+
+}
+
 .wysiwyg-content h3,
 .wysiwyg-content h4 {
     font-weight: 600;
@@ -109,7 +114,8 @@ footer {
 .card_item {
     margin-top: 90px;
 }
-.logo a{
+
+.logo a {
     font-size: 30px;
     font-weight: 700;
     color: #1b1b1b;

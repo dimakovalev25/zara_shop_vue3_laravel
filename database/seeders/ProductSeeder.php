@@ -25,7 +25,7 @@ class ProductSeeder extends Seeder
             ]);
         }*/
 
-        Product::factory(5)->create();
+        Product::factory(2)->create();
 
     }
 }
