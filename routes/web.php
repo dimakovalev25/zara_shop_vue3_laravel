@@ -48,6 +48,7 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware(['auth', 'verified', 'set_locale'])->group(function() {
     Route::get('/profile', [ProfileController::class, 'view'])->name('profile');
+    Route::post('/profile/password-update', [ProfileController::class, 'passwordUpdate'])->name('password-update');
     Route::post('/cart', [ProfileController::class, 'approve'])->name('approve');
 });
 

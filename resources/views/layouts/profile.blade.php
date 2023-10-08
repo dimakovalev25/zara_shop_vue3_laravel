@@ -1,5 +1,13 @@
 <x-app-layout>
-    <div class="container mt-[70px] lg:w-2/3 xl:w-2/3 mx-auto">
+    <div x-data="{
+    flashMessage: '{{\Illuminate\Support\Facades\Session::get('flash_message')}}',
+            init() {
+                if (this.flashMessage) {
+                    setTimeout(() => this.$dispatch('notify', {message: this.flashMessage}), 200)
+                }
+            }
+
+    }" class="container mt-[70px] lg:w-2/3 xl:w-2/3 mx-auto">
         <div class="grid grid-cols-1 sm:grid-cols-5 items-start gap-6">
             <div class="col-span-3 bg-white p-4 rounded-lg shadow">
 
@@ -34,9 +42,6 @@
                         />
                     </div>
                 </div>
-
-
-
 
 
                 <div class="mb-6">
@@ -107,33 +112,42 @@
 
             <div class="col-span-2 bg-white p-4 rounded-lg shadow">
                 <h2 class="text-xl mb-5">@lang('main.my_acc')</h2>
-                <div class="mb-4">
-                    <input
-                            type="password"
-                            name="password"
-                            placeholder="{{__('main.y_pass')}}"
-                            class="border-gray-300 focus:border-purple-500 focus:outline-none focus:ring-purple-500 rounded-md w-full"
-                    />
-                </div>
-                <div class="mb-4">
-                    <input
-                            type="password"
-                            name="password"
-                            placeholder="{{__('main.new_pass')}}"
-                            class="border-gray-300 focus:border-purple-500 focus:outline-none focus:ring-purple-500 rounded-md w-full"
-                    />
-                </div>
-                <div class="mb-4">
-                    <input
-                            type="password"
-                            name="password"
-                            placeholder="{{__('main.new_pass2')}}"
-                            class="border-gray-300 focus:border-purple-500 focus:outline-none focus:ring-purple-500 rounded-md w-full"
-                    />
-                </div>
-                <div>
-                    <button class="btn-primary bg-emerald-500 hover:bg-emerald-600 active:bg-emerald-700">@lang('main.update')</button>
-                </div>
+
+
+                <form method="post" action="{{ route('password-update') }}">
+                    @csrf
+
+
+                    <div class="mb-4">
+                        <input
+                                type="password"
+                                name="old_password"
+                                placeholder="{{__('main.y_pass')}}"
+                                class="border-gray-300 focus:border-purple-500 focus:outline-none focus:ring-purple-500 rounded-md w-full"
+                        />
+                    </div>
+                    <div class="mb-4">
+                        <input
+                                type="password"
+                                name="new_password"
+                                placeholder="{{__('main.new_pass')}}"
+                                class="border-gray-300 focus:border-purple-500 focus:outline-none focus:ring-purple-500 rounded-md w-full"
+                        />
+                    </div>
+                    <div class="mb-4">
+                        <input
+                                type="password"
+                                name="new_password_confirmation"
+                                placeholder="{{__('main.new_pass2')}}"
+                                class="border-gray-300 focus:border-purple-500 focus:outline-none focus:ring-purple-500 rounded-md w-full"
+                        />
+                    </div>
+                    <div>
+                        <button class="btn-primary bg-emerald-500 hover:bg-emerald-600 active:bg-emerald-700">@lang('main.update')</button>
+                    </div>
+
+                </form>
+
             </div>
         </div>
 

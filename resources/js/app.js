@@ -91,21 +91,10 @@ document.addEventListener("alpine:init", async () => {
                     })
             },
 
-/*            approveOrder(){
-                this.product = null
+            trashCart() {
                 this.$dispatch("notify", {
-                    message: "The order has been sent, our manager will contact you",
+                    message: "!!!!!!",
                 });
-            },   */
-
-            changeQuantity2() {
-                post(this.product.updateQuantityUrl, {quantity: 0})
-                    .then(result => {
-                        this.$dispatch('cart-change', {count: result.count})
-                        this.$dispatch("notify", {
-                            message: "!!!!!!",
-                        });
-                    })
             },
         };
     });

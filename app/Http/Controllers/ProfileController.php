@@ -3,16 +3,32 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\OrderApproveRequest;
+use App\Http\Requests\PasswordUpdateRequest;
 use App\Models\Country;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 
 class ProfileController extends Controller
 {
+
+    public function passwordUpdate(PasswordUpdateRequest $request)
+    {
+        $user = $request->user();
+
+        $passwordData = $request->validated();
+
+        $user->password = Hash::make($passwordData['new_password']);
+        $user->save();
+
+        $request->session()->flash('flash_message', 'Your password was successfully updated.');
+
+        return redirect()->route('profile');
+    }
 
     public function approve(OrderApproveRequest $request)
     {
