@@ -1,6 +1,6 @@
 <div
         id="carouselExampleCaptions"
-        class="relative carousel h-[400px]"
+        class="relative carousel h-[400px] max-[525px]:hidden"
         data-te-carousel-init
         data-te-ride="carousel">
     <!--Carousel indicators-->
@@ -44,8 +44,8 @@
                     alt="..." />
             <div
                     class="absolute inset-x-[15%] bottom-5 hidden py-5 text-center text-white md:block">
-                <h5 class="text-xl"> @lang('main.slider_desc')</h5>
-                <p>
+                <h5 class="text-xl text-orange-500"> @lang('main.slider_desc')</h5>
+                <p class="text-orange-500">
                     @lang('main.slider_title')
                 </p>
             </div>
@@ -78,8 +78,8 @@
                     alt="..." />
             <div
                     class="absolute inset-x-[15%] bottom-5 hidden py-5 text-center text-white md:block">
-                <h5 class="text-xl">@lang('main.slider_title')</h5>
-                <p>
+                <h5 class="text-xl text-red-500">@lang('main.slider_title')</h5>
+                <p class="text-red-500">
                     @lang('main.slider_desc')
                 </p>
             </div>

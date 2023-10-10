@@ -113,9 +113,16 @@ footer {
     margin-top: 90px;
 }
 
+.mobile-input{
+    margin-left: 10px;
+    width: 120px !important;
+}
+
+/*
+
 .logo a {
     font-size: 30px;
     font-weight: 700;
     color: #1b1b1b;
     margin-top: -6px;
-}
+}*/

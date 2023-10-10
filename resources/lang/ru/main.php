@@ -9,15 +9,16 @@ return [
     'street' => 'Улица номер дома и квартиры',
 
 
-    'online_shop' => 'Интернет магазин  Apple',
+    'online_shop' => 'Apples shop',
     'goods' => 'Товары',
     'categories' => 'Категории',
     'cart' => 'Корзина',
+    'my_cart' => 'Моя корзина',
     'current_lang' => 'ru',
     'set_lang' => 'en',
     'ru_lang' => 'Русский язык',
     'en_lang' => 'English language',
-    'lang' => 'Сменить язык',
+    'lang' => 'Язык',
 
 
     'curr' => 'Валюта',

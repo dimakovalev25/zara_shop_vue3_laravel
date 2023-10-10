@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class="container lg:w-2/3 xl:w-2/3 mx-auto  cart" x-data="{
+    <div class="container max-[525px]:w-full lg:w-2/3 xl:w-2/3 mx-auto  cart" x-data="{
             confirmationFormOpen: false,
     }">
 
@@ -23,7 +23,7 @@
             },
         }" class="bg-white p-4 rounded-lg shadow ">
 
-            <div class="mx-auto w-1/2">
+            <div class="mx-auto  ">
 
                 <h1 class="text-3xl font-bold mb-6">@lang('main.items')</h1>
 
@@ -75,14 +75,14 @@
                         <div class="border-t border-gray-300 pt-4">
                             <div class="flex justify-between">
                                 <span class="font-semibold"> @lang('main.subtotal')</span>
-                                <span id="cartTotal" class="text-xl" x-text="`$${cartTotal}`"></span>
                             </div>
+                                <span id="cartTotal" class="text-xl" x-text="`$${cartTotal}`"></span>
                             <p class="text-gray-500 mb-6">
                                 @lang('main.ship')
                             </p>
 
 
-                            <div :style="{ visibility: confirmationFormOpen ? 'hidden' : 'visible' }">
+                            <div class="sm:text-lg" :style="{ visibility: confirmationFormOpen ? 'hidden' : 'visible' }">
                                 <button @click="confirmationFormOpen = !confirmationFormOpen" type="submit"
                                         class="btn-primary bg-emerald-500 hover:bg-emerald-600 active:bg-emerald-700 w-full">
                                     @lang('main.proc')
@@ -104,25 +104,24 @@
         </div>
 
 
-        <div x-data="productItem"
+        <div x-cloak x-data="productItem"
              class="mt-3 bg-white p-4 rounded-lg shadow w-full transition-opacity duration-200"
              :class="{ 'opacity-100': confirmationFormOpen }"
              :style="{ visibility: confirmationFormOpen ? 'visible' : 'hidden' }"
         >
 
-            <div x-data="{ areaValid: false, cityValid: false, streetValid: false, nameValid: false, phoneValid: false }"
+            <div x-cloak x-data="{ areaValid: false, cityValid: false, streetValid: false, nameValid: false, phoneValid: false }"
 
-                 class="mx-auto w-1/2">
+                 class="mx-auto max-[525px]:w-full">
                 <h1 class="text-3xl font-bold mb-6">@lang('main.details')</h1>
 
-                <form action="{{ route('approve') }}" method="POST"
+                <form x-cloak action="{{ route('approve') }}" method="POST"
                       x-data="{ areaValid: false, cityValid: false, streetValid: false, nameValid: false, phoneValid: false,
                       buttonshow() {
                       if (areaValid, cityValid, streetValid, nameValid, phoneValid){
                       return true
                       } else {
-                      return false
-                      }
+                      return false  }
                       },
                       isbuttonshow: buttonshow(),
 
@@ -209,15 +208,6 @@
                         </div>
                     </div>
 
-
-{{--                    <button
-                            @click.prevent="trashCart()"
-                            class="btn-primary bg-emerald-500 hover:bg-emerald-600 active:bg-emerald-700 w-full"
-                            :class="{ 'opacity-100': areaValid && cityValid && streetValid && nameValid && phoneValid, 'opacity-0': !(areaValid && cityValid && streetValid && nameValid && phoneValid) }"
-                            :style="{ isbuttonshow ? 'visible' : 'hidden' }"
-                    >
-                        @lang('main.send_order')
-                    </button>--}}
 
                     <button
                             @click.prevent="trashCart()"

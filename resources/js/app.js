@@ -55,6 +55,14 @@ document.addEventListener("alpine:init", async () => {
 
 
     }));
+    Alpine.store('darkMode', {
+        on: false,
+        toggleDarkMode() {
+            this.on = !this.on
+        }
+
+    });
+
 
     Alpine.data("productItem", (product) => {
         return {

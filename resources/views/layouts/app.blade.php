@@ -13,12 +13,15 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/tw-elements.min.css" />
     <script src="https://cdn.tailwindcss.com/3.3.0"></script>
 
+{{--    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>--}}
+{{--    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>--}}
+
 </head>
 <body>
 
 @include('layouts.navigation')
 
-<div class="flex flex-col min-h-screen">
+<div class="flex flex-col min-h-screen max-[525px]:mt-[80px]">
     <main class="p-5 flex-grow">
 
         {{ $slot  }}
@@ -66,6 +69,8 @@
     </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js">
+</script>
+
 </body>
 </html>

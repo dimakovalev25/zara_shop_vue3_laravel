@@ -10,16 +10,17 @@ return [
 
 
 
-    'online_shop' => 'Online shop Apple',
+    'online_shop' => 'Apples shop',
     'goods' => 'Products',
     'categories' => 'Categories',
     'cart' => 'Cart',
+    'my_cart' => 'My cart',
     'current_lang' => 'en',
     'set_lang' => 'ru',
     'ru_lang' => 'Русский язык',
     'en_lang' => 'English language',
 
-    'lang' => 'Change language',
+    'lang' => 'Language',
 
 
     'curr' => 'Currency',
