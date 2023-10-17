@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -18,6 +17,11 @@
 
 </head>
 <body>
+<div >
+{{--<button class="z-50 mb-[200px]" @click="darkTheme = !darkTheme" x-bind:class="{'dark-theme': darkTheme, 'light-theme': !darkTheme}"
+    >
+    Toggle Theme!!!!
+</button>--}}
 
 @include('layouts.navigation')
 
@@ -71,6 +75,6 @@
 
 <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js">
 </script>
-
+</div>
 </body>
 </html>
