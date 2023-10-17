@@ -4,8 +4,17 @@ import Alpine from 'alpinejs';
 import collapse from '@alpinejs/collapse'
 import {get, post} from "./http.js";
 
+
 Alpine.plugin(collapse)
 window.Alpine = Alpine;
+
+import {
+    Carousel,
+    initTE,
+} from "tw-elements";
+
+initTE({ Carousel });
+
 
 document.addEventListener("alpine:init", async () => {
 

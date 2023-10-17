@@ -7,6 +7,15 @@
 
     <div
             class="flex items-center justify-center border-b-2 border-neutral-200 p-6 dark:border-neutral-500 lg:justify-between">
+
+{{--
+        <img
+                src="{{ asset('storage/a3.jpg') }}"
+                class="block w-full"
+                alt="..." />
+--}}
+
+
         <div class="mr-12 hidden lg:block">
             <span>@lang('main.connect')</span>
         </div>

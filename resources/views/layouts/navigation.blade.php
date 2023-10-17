@@ -50,7 +50,7 @@
             </button>
 
             <a href="/products"
-               class="mt-3 md:mt-4 border-2 rounded text-3xl block font-bold w-[17rem] sm:text-3xl lg:text-4xl">@lang('main.online_shop') </a>
+               class="mt-3 md:mt-4 text-3xl block font-bold w-[17rem] sm:text-3xl lg:text-4xl">@lang('main.online_shop') </a>
 
 
         </div>
