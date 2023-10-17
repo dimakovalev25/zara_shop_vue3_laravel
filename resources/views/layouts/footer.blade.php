@@ -103,7 +103,7 @@
 }" class="relative " data-te-dropdown-hover-toggle-ref>
                     <p class="mb-4">
 
-                        <template x-for="category in categories" :key="category">
+                        <template x-for="category in categories" :key="category.id">
                             <div class="mb-4">
 
                                 <a class="text-neutral-600 dark:text-neutral-200"

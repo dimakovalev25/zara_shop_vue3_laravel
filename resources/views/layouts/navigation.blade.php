@@ -50,7 +50,7 @@
             </button>
 
             <a href="/products"
-               class="mt-3 md:mt-4 text-3xl block font-bold w-[17rem] sm:text-3xl lg:text-4xl">@lang('main.online_shop') </a>
+               class="mt-3 md:mt-4 border-2 rounded text-3xl block font-bold w-[17rem] sm:text-3xl lg:text-4xl">@lang('main.online_shop') </a>
 
 
         </div>
@@ -297,7 +297,7 @@
 
 
                             <li>
-                                <template x-for="category in categories" :key="category">
+                                <template x-for="category in categories" :key="category.id">
 
                                     <a class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-lg  font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600"
                                        :href="category.id"
@@ -687,7 +687,7 @@
 
                             <p class="mb-4">
 
-                                <template x-for="category in categories" :key="category">
+                                <template x-for="category in categories" :key="category.id">
                                     <div class="ml-5 mt-2">
 
                                         <a class="text-neutral-900 dark:text-neutral-200"
@@ -856,7 +856,7 @@
 
                         <p class="mb-4">
 
-                            <template x-for="category in categories" :key="category">
+                            <template x-for="category in categories" :key="category.id">
                                 <div class="ml-5 mt-2">
 
                                     <a class="text-neutral-900 dark:text-neutral-200"

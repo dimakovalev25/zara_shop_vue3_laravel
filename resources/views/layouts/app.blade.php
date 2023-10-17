@@ -8,20 +8,12 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     <title>{{ config('app.name', 'e-commerce') }}</title>
-    <link href = "/fonts/poppins/stylesheet.css" rel = "stylesheet" type = "text/css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/tw-elements.min.css" />
-    <script src="https://cdn.tailwindcss.com/3.3.0"></script>
 
-{{--    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>--}}
-{{--    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>--}}
+    <link href = "/fonts/poppins/stylesheet.css" rel = "stylesheet" type = "text/css" />
 
 </head>
 <body>
 <div >
-{{--<button class="z-50 mb-[200px]" @click="darkTheme = !darkTheme" x-bind:class="{'dark-theme': darkTheme, 'light-theme': !darkTheme}"
-    >
-    Toggle Theme!!!!
-</button>--}}
 
 @include('layouts.navigation')
 
