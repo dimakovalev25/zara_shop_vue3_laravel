@@ -50,13 +50,14 @@ return [
     'y_pass' => 'Your password',
     'new_pass' => 'New password',
     'new_pass2' => 'Repeat new password',
+    'change_pass' => 'Change password',
     'y_name' => 'Your name',
     'y_phone' => 'Your phone',
     'y_email' => 'Your email address',
     'y_pass2' => 'Repeat password',
     'y_full_name'=>'Your Full First Name and Second Name',
     'bel'=>'Belarus',
-
+    'no_items' => "До You don't have any items in cart",
     'logout' => 'Logout',
     'register' => 'Register',
     'price' => 'Price',
@@ -105,6 +106,6 @@ return [
     'my_acc' => 'My account',
     'my_profile' => 'My profile',
     'my_orders' => 'My orders',
-    'no_product' => 'There are no products published',
+    'no_product' => 'There are products not found',
 
 ];

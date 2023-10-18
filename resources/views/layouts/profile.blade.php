@@ -32,7 +32,7 @@
                                 class="border-gray-300 focus:border-purple-500 focus:outline-none focus:ring-purple-500 rounded-md w-full"
                         />
                     </div>
-                    <div class="mb-4">
+{{--                    <div class="mb-4">
                         <input
                                 placeholder="{{ __('main.y_phone') }}"
                                 type="text"
@@ -40,7 +40,7 @@
                                 value="{{$customer->phone ? $customer->phone : 'no data'}}"
                                 class="border-gray-300 focus:border-purple-500 focus:outline-none focus:ring-purple-500 rounded-md w-full"
                         />
-                    </div>
+                    </div>--}}
                 </div>
 
 
@@ -57,9 +57,9 @@
                                     name="country"
                                     class="border-gray-300 focus:border-purple-500 focus:outline-none focus:ring-purple-500 rounded-md w-full"
                             >
-                                @foreach($countries as $country)
-                                    <option value="{{$country->code}}">{{$country->name}}</option>
-                                @endforeach
+
+                                    <option value="bel">{{ __('main.bel') }}</option>
+
                             </select>
                         </div>
 
@@ -112,6 +112,7 @@
 
             <div class="col-span-2 bg-white p-4 rounded-lg shadow">
                 <h2 class="text-xl mb-5">@lang('main.my_acc')</h2>
+                <h2 class="text-xs mb-5">@lang('main.change_pass')</h2>
 
 
                 <form method="post" action="{{ route('password-update') }}">

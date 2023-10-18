@@ -79,8 +79,8 @@
                     alt="..." />
             <div
                     class="absolute inset-x-[15%] bottom-5 hidden py-5 text-center text-white md:block">
-                <h5 class="text-xl text-red-500">@lang('main.slider_title')</h5>
-                <p class="text-red-500">
+                <h5 class="text-xl text-gray-800">@lang('main.slider_title')</h5>
+                <p class="text-gray-800">
                     @lang('main.slider_desc')
                 </p>
             </div>

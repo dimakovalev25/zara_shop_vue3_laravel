@@ -9,7 +9,9 @@
 
     <title>{{ config('app.name', 'e-commerce') }}</title>
 
-    <link href="/fonts/poppins/stylesheet.css" rel="stylesheet" type="text/css"/>
+    <link href="/fonts/poppins/stylesheet.css" rel="stylesheet" type="text/css"/>{{--
+    <link href="{{ mix('resources/css/app.css') }}" rel="stylesheet">
+    <script src="{{ mix('resources/js/app.js') }}"></script>--}}
     <link
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap"
             rel="stylesheet"/>
@@ -28,7 +30,7 @@
 
         </main>
         @include('layouts.footer')
-{{--        @include('layouts.navbarte')--}}
+        {{--        @include('layouts.navbarte')--}}
 
     </div>
 

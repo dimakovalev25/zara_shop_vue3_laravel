@@ -42,9 +42,9 @@ class ProfileController extends Controller
         $id = $user_auth->id;
         $user = User::find($id);
         $customer = $user->customer;
-        $customer_address = $customer->customer_address;
+//        $customer_address = $customer->customer_address;
         $countries = Country::query()->orderBy('name')->get();
-        return view('layouts.profile', compact('user', 'countries', 'customer', 'customer_address'));
+        return view('layouts.profile', compact('user', 'countries', 'customer'));
 
     }
 

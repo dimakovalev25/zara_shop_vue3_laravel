@@ -11,6 +11,12 @@ use Illuminate\Support\Facades\Cookie;
 
 class CartController extends Controller
 {
+
+
+    public function checkout()
+    {
+        
+    }
     public function index()
     {
         $cartItems = Cart::getCartItems();
@@ -24,8 +30,6 @@ class CartController extends Controller
 
         return view('cart.index', compact('cartItems', 'products', 'total'));
     }
-
-
     public function add(Request $request, Product $product)
     {
         $quantity = $request->post('quantity', 1);
@@ -72,7 +76,6 @@ class CartController extends Controller
             return response(['count' => Cart::getCountFromItems($cartItems)]);
         }
     }
-
     public function remove(Request $request, Product $product)
     {
         $user = $request->user();
@@ -98,7 +101,6 @@ class CartController extends Controller
             return response(['count' => Cart::getCountFromItems($cartItems)]);
         }
     }
-
     public function updateQuantity(Request $request, Product $product)
     {
         $quantity = (int)$request->post('quantity');
@@ -122,4 +124,5 @@ class CartController extends Controller
             return response(['count' => Cart::getCountFromItems($cartItems)]);
         }
     }
+
 }
