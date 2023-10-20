@@ -1,7 +1,7 @@
 <x-app-layout>
 
-    <main class="p-5">
-        <form action="{{ route('login') }}" method="POST" class="w-[400px] mx-auto p-6 my-16">
+    <div class="pt-16 px-[15%] max-[525px]:pt-12 min-[725px]:px-[30%] mt-10">
+        <form action="{{ route('login') }}" method="POST" class=" ">
             @csrf
             <h2 class="text-2xl font-semibold text-center mb-5">
                 @lang('main.login_acc')
@@ -13,7 +13,6 @@
                         class="text-sm text-purple-700 hover:text-purple-600"
                 >@lang('main.login_or')</a
                 >
-{{--   show errors!!!!!            <x-auth-validation-errors class="mb-4" :errors="$errors"/>--}}
 
             </p>
             <div class="mb-4">
@@ -23,7 +22,6 @@
                         name="email"
                         :value="old('email')"
                         :errors="$errors"
-{{--                        placeholder="Your email address"--}}
                         placeholder="{{ __('main.y_email') }}"
                 />
             </div>
@@ -47,7 +45,8 @@
                     />
                     <label for="loginRememberMe">@lang('main.remember')</label>
                 </div>
-                <a href="{{route('password.request')}}" class="text-sm text-purple-700 hover:text-purple-600">@lang('main.forgot')</a>
+                <a href="{{route('password.request')}}"
+                   class="text-sm text-purple-700 hover:text-purple-600">@lang('main.forgot')</a>
             </div>
             <button
                     class="btn-primary  bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 w-full"
@@ -55,6 +54,6 @@
                 @lang('main.login')
             </button>
         </form>
-    </main>
+    </div>
 
 </x-app-layout>

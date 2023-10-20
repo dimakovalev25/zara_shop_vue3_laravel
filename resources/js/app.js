@@ -59,11 +59,6 @@ document.addEventListener("alpine:init", async () => {
         },
     }));
 
-    Alpine.data("categories", () => ({
-        categories: 'categories_TEST'
-
-
-    }));
     Alpine.store('darkMode', {
         on: false,
         toggleDarkMode() {
@@ -76,42 +71,184 @@ document.addEventListener("alpine:init", async () => {
     Alpine.data("productItem", (product) => {
         return {
             product,
+
+            locale: '',
+
+            getLocale() {
+                return axios.get('/get-session-data')
+                    .then(response => {
+                        const sessionData = response.data;
+                        this.locale = sessionData.locale;
+                        return this.locale;
+                    })
+                    .catch(error => {
+                        console.error(error);
+                    });
+            },
+
             addToCart(quantity = 1) {
+
                 post(this.product.addToCartUrl, {quantity})
                     .then(result => {
                         this.$dispatch('cart-change', {count: result.count})
-                        this.$dispatch("notify", {
-                            message: "The item was added into the cart",
-                        });
+                        this.getLocale()
+                            .then(res => {
+                                if (this.locale === 'en'){
+                                    this.$dispatch("notify", {
+                                        message: "The item was added into the cart!",
+                                    });
+                                } else  {
+                                    this.$dispatch("notify", {
+                                        message: "Позиция добавлена в корзину!",
+                                    });
+                                }}
+                            )
+                            .catch(err => {
+                                console.log(err)
+                            })
+
+/*                        axios.get('/get-session-data')
+                            .then(response => {
+                                const sessionData = response.data;
+                                const locale = sessionData.locale;
+                                if(locale === 'en') {
+                                    this.$dispatch("notify", {
+                                        message: "The item was added into the cart!",
+                                    });
+                                } else {
+                                    this.$dispatch("notify", {
+                                        message: "Позиция добавлена в корзину!",
+                                    });
+                                }
+
+                            })
+                            .catch(error => {
+                                console.error(error);
+                            });*/
+
                     })
+
+
                     .catch(response => {
                         // console.log(response);
                     })
             },
+
+            /*removeAllItemsFromCart() {
+                this.cartItems.forEach(item => {
+                    console.log(item)
+                    // this.removeItemFromCart(item);
+                });
+                this.getLocale()
+                    .then(res => {
+                        if (this.locale === 'en'){
+                            this.$dispatch("notify", {
+                                message: "Your application has been sent, wait for a call from the manager",
+                            });
+                        } else  {
+                            this.$dispatch("notify", {
+                                message: "Ваша заявка отправлена, ожидайте звонка менеджера!",
+                            });
+                        }}
+                    )
+                    .catch(err => {
+                        console.log(err)
+                    })
+            },*/
+
+            removeAllItemsFromCart() {
+                if (confirm("Are you sure you want to remove all items from the cart?")) {
+                    axios.delete('/remove-all-items-from-cart')
+                        .then(response => {
+                            this.cartItems = [];
+                            this.$dispatch('cart-change', { count: 0 });
+                            this.getLocale().then(res => {
+                                if (this.locale === 'en') {
+                                    this.$dispatch("notify", {
+                                        message: "All items have been removed from the cart.",
+                                    });
+                                } else {
+                                    this.$dispatch("notify", {
+                                        message: "Все товары удалены из корзины.",
+                                    });
+                                }
+                            });
+                        })
+                        .catch(error => {
+                            console.error(error);
+                        });
+                }
+            },
+
+
             removeItemFromCart() {
                 post(this.product.removeUrl)
                     .then(result => {
-                        this.$dispatch("notify", {
-                            message: "The item was removed from cart",
-                        });
-                        this.$dispatch('cart-change', {count: result.count})
-                        this.cartItems = this.cartItems.filter(p => p.id !== product.id)
+                        console.log("Removed item from cart. New count:", result.count);
+                        this.$dispatch('cart-change', { count: result.count });
+                        this.cartItems = this.cartItems.filter(p => p.id !== this.product.id);
+                        this.getLocale()
+                            .then(res => {
+                                console.log("Locale:", this.locale);
+                                if (this.locale === 'en'){
+                                    this.$dispatch("notify", {
+                                        message: "The item was removed from cart",
+                                    });
+                                } else  {
+                                    this.$dispatch("notify", {
+                                        message: "Позиция была удалена из корзины!",
+                                    });
+                                }
+                            })
+                            .catch(err => {
+                                console.log(err);
+                            });
                     })
+                    .catch(error => {
+                        console.log(error);
+                    });
             },
+
             changeQuantity() {
                 post(this.product.updateQuantityUrl, {quantity: product.quantity})
                     .then(result => {
                         this.$dispatch('cart-change', {count: result.count})
-                        this.$dispatch("notify", {
-                            message: "The item quantity was updated",
-                        });
+                        this.getLocale()
+                            .then(res => {
+                                if (this.locale === 'en'){
+                                    this.$dispatch("notify", {
+                                        message: "The item quantity was updated",
+                                    });
+                                } else  {
+                                    this.$dispatch("notify", {
+                                        message: "Количество было изменено!",
+                                    });
+                                }}
+                            )
+                            .catch(err => {
+                                console.log(err)
+                            })
+
                     })
             },
 
             trashCart() {
-                this.$dispatch("notify", {
-                    message: "!!!!!!",
-                });
+
+                this.getLocale()
+                    .then(res => {
+                        if (this.locale === 'en'){
+                            this.$dispatch("notify", {
+                                message: "Your application has been sent, wait for a call from the manager",
+                            });
+                        } else  {
+                            this.$dispatch("notify", {
+                                message: "Ваша заявка отправлена, ожидайте звонка менеджера!",
+                            });
+                        }}
+                    )
+                    .catch(err => {
+                        console.log(err)
+                    })
             },
         };
     });

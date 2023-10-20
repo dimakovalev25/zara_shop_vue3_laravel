@@ -13,4 +13,10 @@ class LanguageController extends Controller
         App::setLocale($locale);
         return redirect()->back();
     }
+
+    public function getSessionData()
+    {
+        $locale = session('locale');
+        return response()->json(['locale' => $locale]);
+    }
 }

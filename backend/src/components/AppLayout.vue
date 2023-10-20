@@ -27,10 +27,6 @@ export default {
     name: "GuestLayout",
     components: { Sidebar, Navbar},
 
-    mounted() {
-        // store.dispatch('getUser')
-    },
-
     data() {
         return {
             title: 'test'

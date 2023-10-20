@@ -6,12 +6,13 @@
                     'price' => $product->price,
                       'addToCartUrl' => route('cart.add', $product)
                 ]) }})" class="container mx-auto card_item">
+
     <div x-data="{images: ['{{$product->image}}']">
 
         <main class="my-8">
-            <div class="container mx-auto px-6">
+            <div class="container mx-auto px-6 pt-2 border-2 border-orange-900 ">
                 <div class="md:flex md:items-center">
-                    <div class="w-full h-64 md:w-1/2 lg:h-96">
+                    <div class="w-full h-64 md:w-1/2 lg:h-96 ">
 
                             <img src="{{ $product->image }}" alt="" class="w-auto mx-auto"/>
 

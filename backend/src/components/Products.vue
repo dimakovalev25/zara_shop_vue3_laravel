@@ -5,7 +5,7 @@
             <h1 class="text-3xl font-semibold">Add new product</h1>
             <form @submit.prevent="onSubmit">
                 <div class="bg-white px-4 pt-5 sm:p-6 sm:pb-4 border-b-2 bg rounded-lg">
-                    <CustomInput class="mb-2" v-model="product.title" label="Product Title"/>
+                    <CustomInput class="mb-2" v-model="product.title" label="Product Title" :value="product.title ?? ''"/>
                     <CustomInput type="file" class="mb-2" label="Product Image" @change="file => product.image = file"/>
                     <CustomInput type="textarea" class="mb-2" v-model="product.description" label="Description"/>
                     <CustomInput type="number" class="mb-2" v-model="product.price" label="Price"/>
@@ -35,7 +35,6 @@
 
 
                 </div>
-
 
             </form>
         </div>
@@ -101,8 +100,8 @@
                 <tr v-for="product of products.data">
                     <td class="border-b p-2 ">{{ product.id }}</td>
                     <td class="border-b p-2 ">
-                        <!--                        <img class="w-16" :src="product.image" :alt="product.title">-->
                         <img class="w-16 h-16 object-cover" :src="product.image_url" :alt="product.title">
+
                     </td>
                     <td class="border-b p-2 max-w-[200px] whitespace-nowrap overflow-hidden text-ellipsis">
                         {{ product.title }}
@@ -115,9 +114,6 @@
                         {{ product.category_id }}
                     </td>
 
-<!--                    <td class="border-b p-2">
-                        {{ getName(product.category_id) }}
-                    </td>-->
                     <td class="border-b p-2">
                         <button
                                 :class="[
@@ -164,7 +160,6 @@
                         class="relative z-0 inline-flex justify-center rounded-md shadow-sm -space-x-px"
                         aria-label="Pagination"
                 >
-                    <!-- Current: "z-10 bg-indigo-50 border-indigo-500 text-indigo-600", Default: "bg-white border-gray-300 text-gray-500 hover:bg-gray-50" -->
                     <a
                             v-for="(link, i) of products.links"
                             :key="i"
@@ -205,58 +200,19 @@ const search = ref('');
 const products = computed(() => store.state.products);
 const categories = computed(() => store.state.categories);
 
-
-const product = ref({
-    title: null,
-    image: null,
-    description: null,
-    price: null,
-    category_id: null
+onMounted(() => {
+    getProducts();
+    getCategories()
 })
+
+const product = ref({})
 
 function getName(id) {
     store.dispatch('getCategoryName' , id)
 }
 
-/* function getCategoryName(categoryId) {
-    axios.get(`/api/categories/${categoryId}`)
-        .then(response => {
-            console.log(response.data.name);
-        })
-        .catch(error => {
-            console.error(error);
-        });
-}*/
-
 const editedProduct = ref(null);
 
-/*async function onEditSubmit() {
-
-    store.dispatch('deleteProduct', editedProduct.value.id)
-        .then(res => {
-            store.dispatch('updateProduct', {
-                id: editedProduct.value.id,
-                title: editedProduct.value.title,
-                price: editedProduct.value.price,
-                image: editedProduct.value.image,
-                description: editedProduct.value.description,
-
-            })
-                .then(response => {
-                    if (response.status === 201) {
-                        store.dispatch('getProducts')
-                    }
-                    getProducts();
-                })
-                .catch(res => {
-                    console.log(res)
-                })
-                .finally(res => {
-                    editedProduct.value = null
-                })
-        })
-
-}*/
 async function onEditSubmit() {
 
     store.dispatch('updateProduct', {
@@ -271,7 +227,7 @@ async function onEditSubmit() {
             if (response.status === 201) {
                 store.dispatch('getProducts')
             }
-            getProducts();
+
         })
         .catch(res => {
             // console.log(res)
@@ -284,13 +240,7 @@ async function onEditSubmit() {
 
 function editProduct(product) {
     editedProduct.value = {...product};
-    // console.log(editedProduct.value)
 }
-
-onMounted(() => {
-    getProducts();
-    getCategories()
-})
 
 function getForPage(ev, link) {
     ev.preventDefault();
@@ -300,28 +250,26 @@ function getForPage(ev, link) {
     getProducts(link.url)
 }
 
-function onSubmit() {
-    store.dispatch('createProduct', product.value)
-        .then(response => {
-            if (response.status === 201) {
-                store.dispatch('getProducts')
-            }
+async function onSubmit() {
+    try {
+        const response = await store.dispatch('createProduct', product.value);
 
-        })
-        .catch(res => {
-            console.log(res)
-        })
-        .finally(err => {
-            product.value = null
-            getProducts();
-        })
+        if (response.status === 201) {
+            await store.dispatch('getProducts');
+        }
+    } catch (error) {
+        console.error(error);
+    } finally {
+        product.title = '';
+        product.description = '';
+        product.price = '';
+        product.category_id = null;
+    }
 }
-
 function deleteProduct(product) {
     store.dispatch('deleteProduct', product.id)
         .then(res => {
             store.dispatch('getProducts')
-            getProducts();
         })
 }
 

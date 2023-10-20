@@ -39,9 +39,6 @@ body {
     /*font-family: 'San Francisco Pro Text', sans-serif;*/
     font-family: 'Poppins', sans-serif;
 }
-.my-input {
-
-}
 
 .wysiwyg-content h3,
 .wysiwyg-content h4 {
@@ -95,11 +92,6 @@ header.h12 {
 }
 
 
-footer {
-    bottom: 0;
-    left: 0;
-    right: 0;
-}
 
 .light-theme {
     background-color: #ffffff;
@@ -126,14 +118,7 @@ footer {
 
 .mobile-input{
     margin-left: 10px;
-    width: 120px !important;
+    width: 160px !important;
+    height: 30px !important;
 }
 
-/*
-
-.logo a {
-    font-size: 30px;
-    font-weight: 700;
-    color: #1b1b1b;
-    margin-top: -6px;
-}*/

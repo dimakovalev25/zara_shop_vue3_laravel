@@ -32,18 +32,15 @@ class ProductController extends Controller
     }
 
 
-    public function store(ProductRequest $request)
+/*    public function store(ProductRequest $request)
     {
         $data = $request->validated();
-/*        $data['created_by'] = $request->user()->id;
-        $data['updated_by'] = $request->user()->id;
-        $data['created_by'] = Carbon::create();
-        $data['updated_by'] =  Carbon::create();*/
+
         $data['created_by'] = 1;
         $data['updated_by'] =  1;
 
         $image = $data['image'] ?? null;
-        // Check if image was given and save on local file system
+
         if ($image) {
             $relativePath = $this->saveImage($image);
 //            $data['image'] = $relativePath;
@@ -54,6 +51,27 @@ class ProductController extends Controller
         $product = Product::create($data);
         return new ProductResource($product);
 
+    }*/
+
+    public function store(ProductRequest $request)
+    {
+        $data = $request->validated();
+        $data['created_by'] = 1;
+        $data['updated_by'] = 1;
+
+
+        $image = $data['image'] ?? null;
+
+        if ($image) {
+            $relativePath = $this->saveImage($image);
+            $data['image'] = URL::to(Storage::url($relativePath));
+            $data['image_mime'] = $image->getClientMimeType();
+            $data['image_size'] = $image->getSize();
+        }
+
+        $product = Product::create($data);
+
+        return new ProductResource($product);
     }
     private function saveImage(UploadedFile $image)
     {
@@ -73,7 +91,7 @@ class ProductController extends Controller
     public function update(ProductRequest $request, Product $product)
     {
         $data = $request->validated();
-//        $data['updated_by'] = $request->user()->id;
+
         $data['updated_by'] = 1;
         $image = $data['image'] ?? null;
 
@@ -83,9 +101,7 @@ class ProductController extends Controller
             $data['image_mime'] = $image->getClientMimeType();
             $data['image_size'] = $image->getSize();
 
-          /*  if ($product->image) {
-                Storage::deleteDirectory('/public/' . dirname($product->image));
-            }*/
+
         }
         $product->update($data);
         return new ProductResource($product);

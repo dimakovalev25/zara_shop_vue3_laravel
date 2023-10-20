@@ -23,6 +23,13 @@
             },
         }" class="bg-white p-4 rounded-lg shadow ">
 
+
+
+<div x-data="productItem">
+    <button @click="removeAllItemsFromCart()">deletee</button>
+</div>
+
+
             <div class="mx-auto  ">
 
                 <h1 class="text-3xl font-bold mb-6">@lang('main.items')</h1>
@@ -153,7 +160,29 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="flex gap-3">
+                    <div class="flex-1 mb-4 ">
+                        <select
+                                placeholder="{{ __('main.area') }}"
+                                type="text"
+                                name="area"
+                                class="border-green-500 border-[.25rem]  focus:outline-none  rounded-md w-full"
+                        >
+                             <option selected value="by">@lang('main.area')</option>
+                             <option value="by">Брестская область</option>
+                            <option value="by">Витебская область</option>
+                            <option value="by">Гомельская область</option>
+                            <option value="by">Гродненская область</option>
+                            <option value="by">Минская область</option>
+                            <option value="by">Могилевская область</option>
+                        </select>
+                    </div>
+                </div>
+
+
+
+{{--                <div class="flex gap-3">
                     <div class="mb-4 flex-1">
                         <input
                                 placeholder="{{ __('main.area') }}"
@@ -165,7 +194,9 @@
                                 class="my-input rounded-md w-full outline-none"
                         />
                     </div>
-                </div>
+                </div>--}}
+
+
                 <div class="flex gap-3">
                     <div class="mb-4 flex-1">
                         <input
@@ -221,16 +252,17 @@
 
 
                 <button
-                        @click.prevent="clearForm()"
+                        @click.prevent="removeAllItemsFromCart()"
                         class="btn-primary bg-emerald-500 hover:bg-emerald-600 active:bg-emerald-700 w-full"
-                        :class="{ 'opacity-100 btn-primary bg-emerald-500 hover:bg-emerald-600 active:bg-emerald-700 w-full': areaValid && cityValid && streetValid && nameValid && phoneValid, 'opacity-100 btn-primary bg-gray-500 hover:bg-gray-600 active:bg-gray-700 w-full': !(areaValid && cityValid && streetValid && nameValid && phoneValid) }"
-                        :disabled="!(areaValid && cityValid && streetValid && nameValid && phoneValid)"
+                        :class="{ 'opacity-100 btn-primary bg-emerald-500 hover:bg-emerald-600 active:bg-emerald-700 w-full': cityValid && streetValid && nameValid && phoneValid, 'opacity-100 btn-primary bg-gray-500 hover:bg-gray-600 active:bg-gray-700 w-full': !(cityValid && streetValid && nameValid && phoneValid) }"
+                        :disabled="!(cityValid && streetValid && nameValid && phoneValid)"
                 >
                     @lang('main.send_order')
                 </button>
 
 
             </form>
+
         </div>
 
 

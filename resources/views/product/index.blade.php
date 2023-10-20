@@ -1,5 +1,7 @@
 <x-app-layout>
-    @include('components.carousel')
+
+    @include('components.carousel_alpine')
+
     <?php if ($products->count() === 0): ?>
     <div class="text-center text-gray-600 py-16 text-xl">
         @lang('main.no_product')
@@ -18,7 +20,7 @@
                         'addToCartUrl' => route('cart.add', $product)
                     ])
                     }})"
-                 class="block rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
+                 class="block p-2 rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
                 <a href="{{ route('product', $product) }}">
                     <img
                             class="rounded-t-lg"

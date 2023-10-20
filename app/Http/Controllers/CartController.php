@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Helpers\Cart;
 use App\Models\CartItem;
 use App\Models\Product;
+use http\Client\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Cookie;
@@ -30,6 +31,7 @@ class CartController extends Controller
 
         return view('cart.index', compact('cartItems', 'products', 'total'));
     }
+
     public function add(Request $request, Product $product)
     {
         $quantity = $request->post('quantity', 1);
@@ -101,6 +103,27 @@ class CartController extends Controller
             return response(['count' => Cart::getCountFromItems($cartItems)]);
         }
     }
+
+    public function removeAllItemsFromCart(Request $request)
+    {
+        $user = $request->user();
+
+        if ($user) {
+            CartItem::where('user_id', $user->id)->delete();
+        } else {
+            $cartItems = json_decode($request->cookie('cart_items'), true) ?? [];
+            $cartItems = [];
+
+            // Пересохраняем обновленный массив обратно в куки
+            $response = new Response();
+            $response->withCookie(cookie('cart_items', json_encode($cartItems), 60 * 24 * 30));
+
+            return $response;
+        }
+
+        return response(['message' => 'All items have been removed from the cart.']);
+    }
+
     public function updateQuantity(Request $request, Product $product)
     {
         $quantity = (int)$request->post('quantity');
