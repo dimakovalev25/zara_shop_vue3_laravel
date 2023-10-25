@@ -98,7 +98,7 @@
                 <h1 class="text-lg font-semibold">
                     {{$product->title}}
                 </h1>
-                <div class="text-xl font-bold mb-6">${{$product->price}}</div>
+                <div class="text-xl font-bold mb-6">BY {{$product->price}}</div>
                 <div class=" mb-5">
                     <label for="quantity" class="block font-bold mr-4">
                        @lang('main.qt'):

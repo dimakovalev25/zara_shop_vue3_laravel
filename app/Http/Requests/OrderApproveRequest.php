@@ -22,7 +22,6 @@ class OrderApproveRequest extends FormRequest
             'name' => 'required',
             'phone' => 'required',
 
-
         ];
     }
 }

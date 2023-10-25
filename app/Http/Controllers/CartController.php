@@ -13,10 +13,9 @@ use Illuminate\Support\Facades\Cookie;
 class CartController extends Controller
 {
 
-
     public function checkout()
     {
-        
+
     }
     public function index()
     {
@@ -78,6 +77,7 @@ class CartController extends Controller
             return response(['count' => Cart::getCountFromItems($cartItems)]);
         }
     }
+
     public function remove(Request $request, Product $product)
     {
         $user = $request->user();
@@ -105,7 +105,9 @@ class CartController extends Controller
     }
 
     public function removeAllItemsFromCart(Request $request)
+
     {
+
         $user = $request->user();
 
         if ($user) {
@@ -114,13 +116,11 @@ class CartController extends Controller
             $cartItems = json_decode($request->cookie('cart_items'), true) ?? [];
             $cartItems = [];
 
-            // Пересохраняем обновленный массив обратно в куки
             $response = new Response();
             $response->withCookie(cookie('cart_items', json_encode($cartItems), 60 * 24 * 30));
 
             return $response;
         }
-
         return response(['message' => 'All items have been removed from the cart.']);
     }
 
@@ -129,7 +129,10 @@ class CartController extends Controller
         $quantity = (int)$request->post('quantity');
         $user = $request->user();
         if ($user) {
-            CartItem::where(['user_id' => $request->user()->id, 'product_id' => $product->id])->update(['quantity' => $quantity]);
+            CartItem::where([
+                'user_id' => $request->user()->id,
+                'product_id' => $product->id
+            ])->update(['quantity' => $quantity]);
 
             return response([
                 'count' => Cart::getCartItemsCount(),

@@ -2,6 +2,11 @@
 
 return [
     'update' => 'Update',
+    'reg1' => 'Thanks for signing up! Before getting started, could you verify your email address by clicking on the link we just emailed to you? If you didnt receive the email, we will gladly send you another',
+    'reg2' => 'A new verification link has been sent to the email address you provided during registration',
+    'reg3' => 'Resend Verification Email',
+    'reg4' => 'Register and confirm your email to view your cart and place your order!',
+
     'ship_address' => 'Shipping address',
     'zipcode' => 'Zipcode',
     'area' => 'Area',

@@ -71,6 +71,7 @@ document.addEventListener("alpine:init", async () => {
     Alpine.data("productItem", (product) => {
         return {
             product,
+            approveUrl: '',
 
             locale: '',
 
@@ -106,77 +107,65 @@ document.addEventListener("alpine:init", async () => {
                             .catch(err => {
                                 console.log(err)
                             })
-
-/*                        axios.get('/get-session-data')
-                            .then(response => {
-                                const sessionData = response.data;
-                                const locale = sessionData.locale;
-                                if(locale === 'en') {
-                                    this.$dispatch("notify", {
-                                        message: "The item was added into the cart!",
-                                    });
-                                } else {
-                                    this.$dispatch("notify", {
-                                        message: "Позиция добавлена в корзину!",
-                                    });
-                                }
-
-                            })
-                            .catch(error => {
-                                console.error(error);
-                            });*/
-
                     })
-
-
                     .catch(response => {
-                        // console.log(response);
+
                     })
             },
 
-            /*removeAllItemsFromCart() {
-                this.cartItems.forEach(item => {
-                    console.log(item)
-                    // this.removeItemFromCart(item);
-                });
-                this.getLocale()
-                    .then(res => {
-                        if (this.locale === 'en'){
-                            this.$dispatch("notify", {
-                                message: "Your application has been sent, wait for a call from the manager",
-                            });
-                        } else  {
-                            this.$dispatch("notify", {
-                                message: "Ваша заявка отправлена, ожидайте звонка менеджера!",
-                            });
-                        }}
-                    )
-                    .catch(err => {
-                        console.log(err)
-                    })
-            },*/
-
             removeAllItemsFromCart() {
-                if (confirm("Are you sure you want to remove all items from the cart?")) {
-                    axios.delete('/remove-all-items-from-cart')
-                        .then(response => {
-                            this.cartItems = [];
-                            this.$dispatch('cart-change', { count: 0 });
-                            this.getLocale().then(res => {
+                axios.delete('/remove-all-items-from-cart')
+                    .then(response => {
+                        this.cartItems = [];
+                        this.$dispatch('cart-change', { count: 0 });
+                        this.getLocale().then(res => {
                                 if (this.locale === 'en') {
                                     this.$dispatch("notify", {
-                                        message: "All items have been removed from the cart.",
+                                        message: "Your application has been sent, wait for a call from the manager",
                                     });
                                 } else {
                                     this.$dispatch("notify", {
-                                        message: "Все товары удалены из корзины.",
+                                        message: "Ваша заявка   отправлена, ожидайте звонка менеджера!",
                                     });
                                 }
+                            }
+
+                        );
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    });
+            },
+
+            async removeAllItemsFromCartAndSubmit() {
+                try {
+                    await axios.delete('/remove-all-items-from-cart')
+
+                    this.cartItems = [];
+                    this.$dispatch('cart-change', { count: 0 });
+                    console.log('cart change!')
+
+                    await this.getLocale().then(res => {
+                        if (this.locale === 'en') {
+                            this.$dispatch("notify", {
+                                message: "Your application has been sent, wait for a call from the manager",
                             });
-                        })
-                        .catch(error => {
-                            console.error(error);
-                        });
+                        } else {
+                            this.$dispatch("notify", {
+                                message: "Ваша заявка отправлена, ожидайте звонка менеджера!",
+                            });
+                        }
+                    });
+                    setTimeout(() => {
+                        this.approveUrl = this.$el.getAttribute('data-approve-url');
+                        // window.location.href = this.approveUrl;
+                        window.location.href = '/';
+
+                    }, 1200);
+
+
+                } catch (error) {
+                    console.log(error);
                 }
             },
 
@@ -232,24 +221,7 @@ document.addEventListener("alpine:init", async () => {
                     })
             },
 
-            trashCart() {
 
-                this.getLocale()
-                    .then(res => {
-                        if (this.locale === 'en'){
-                            this.$dispatch("notify", {
-                                message: "Your application has been sent, wait for a call from the manager",
-                            });
-                        } else  {
-                            this.$dispatch("notify", {
-                                message: "Ваша заявка отправлена, ожидайте звонка менеджера!",
-                            });
-                        }}
-                    )
-                    .catch(err => {
-                        console.log(err)
-                    })
-            },
         };
     });
 

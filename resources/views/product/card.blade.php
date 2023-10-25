@@ -19,7 +19,7 @@
                     </div>
                     <div class="w-full max-w-lg mx-auto mt-5 md:ml-8 md:mt-0 md:w-1/2">
                         <h3 class="text-gray-700 uppercase text-lg">   {{$product->title}}</h3>
-                        <span class="text-gray-500 mt-3">$   {{$product->price}}</span>
+                        <span class="text-gray-500 mt-3">BY {{$product->price}}</span>
                         <hr class="my-3">
                         <div class="mt-2">
                             <label class="text-gray-700 text-sm" for="count">Count:</label>

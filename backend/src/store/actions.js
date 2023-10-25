@@ -45,7 +45,7 @@ export function getProducts({commit, state}) {
     commit('setProducts', [true])
 
     return axiosClient.get('/products', {
-        params: {search: '', per_page: 10}
+        params: {search: '', per_page: 100}
     })
         .then((response) => {
             commit('setProducts', [false, response.data])

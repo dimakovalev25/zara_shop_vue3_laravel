@@ -18,7 +18,7 @@ class ProductController extends Controller
 
     public function index()
     {
-        $perPage = request('per_page', 10);
+        $perPage = request('per_page', 100);
         $search = request('search', '');
         $sortField = request('sort_field', 'updated_at');
         $sortDirection = request('sort_direction', 'asc');
@@ -30,28 +30,6 @@ class ProductController extends Controller
 
         return ProductListResource::collection($query);
     }
-
-
-/*    public function store(ProductRequest $request)
-    {
-        $data = $request->validated();
-
-        $data['created_by'] = 1;
-        $data['updated_by'] =  1;
-
-        $image = $data['image'] ?? null;
-
-        if ($image) {
-            $relativePath = $this->saveImage($image);
-//            $data['image'] = $relativePath;
-            $data['image'] = URL::to(Storage::url($relativePath));
-            $data['image_mime'] = $image->getClientMimeType();
-            $data['image_size'] = $image->getSize();
-        }
-        $product = Product::create($data);
-        return new ProductResource($product);
-
-    }*/
 
     public function store(ProductRequest $request)
     {

@@ -30,12 +30,21 @@ class ProfileController extends Controller
         return redirect()->route('profile');
     }
 
+    /*    public function approve(OrderApproveRequest $request)
+        {
+            $data = $request->validated();
+            $request->session()->flash('flash_message', 'The order has been sent, our manager will contact you.');
+            return view('approve.index');
+        }*/
+
     public function approve(OrderApproveRequest $request)
     {
         $data = $request->validated();
-        $request->session()->flash('flash_message', 'The order has been sent, our manager will contact you.');
-        return view('approve.index');
+        dd($data);
+
+        return 'approve';
     }
+
     public function view(Request $request)
     {
         $user_auth = Auth::user();
