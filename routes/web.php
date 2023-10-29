@@ -27,6 +27,10 @@ Route::middleware(['guestOrVerified', 'set_locale'])->group(function () {
     });
 
 
+    Route::get('/send-email', [\App\Http\Controllers\EmailConfirmController::class, 'sentConfirmEmail'])->name('sentConfirmEmail');
+    Route::get('/development', [\App\Http\Controllers\DevelopmentController::class, 'index'])->name('development');
+
+
 });
 
 Route::middleware(['auth', 'verified', 'set_locale'])->group(function () {
@@ -35,12 +39,10 @@ Route::middleware(['auth', 'verified', 'set_locale'])->group(function () {
         [CartController::class, 'removeAllItemsFromCart'])->name('remove_items');
     Route::get('/approve', [ProfileController::class, 'approve'])->name('approve');
 
-
-
     Route::get('/profile', [ProfileController::class, 'view'])->name('profile');
     Route::post('/profile/password-update', [ProfileController::class, 'passwordUpdate'])->name('password-update');
-
-
+    Route::get('/orders', [\App\Http\Controllers\OrderController::class, 'index'])->name('orders');
+    Route::get('/orders/:order', [\App\Http\Controllers\OrderController::class, 'view'])->name('orders-view');
 
 
 });
@@ -49,6 +51,7 @@ Route::middleware(['auth', 'verified', 'set_locale'])->group(function () {
 Route::middleware(['set_locale'])->group(function () {
     require __DIR__ . '/auth.php';
 });
+
 
 
 Route::get('/{path}', [\App\Http\Controllers\NotFoundController::class, 'index'])->where('path', '.*');

@@ -33,12 +33,11 @@
                             <!-- Product Item -->
                             <template x-for="product of cartItems" :key="product.id">
                                 <div x-data="productItem(product)">
-                                    <div
-                                            class="w-full flex flex-col sm:flex-row items-center gap-4 flex-1">
-                                        <a :href="product.href"
-                                           class="w-36 h-32 flex items-center justify-center overflow-hidden">
-                                            <img :src="product.image" class="object-fit" alt=""/>
+                                    <div class="w-full flex flex-col sm:flex-row items-center gap-4 flex-1">
+                                        <a :href="product.href" class="w-36 h-32 flex items-center justify-center overflow-hidden">
+                                            <img :src="product.image" class="object-contain w-full h-full" alt=""/>
                                         </a>
+
                                         <div class="flex flex-col justify-between flex-1">
                                             <div class="flex justify-between mb-3">
                                                 <h3 x-text="product.title"></h3>
@@ -114,16 +113,16 @@
 
                 <form method="POST"
                       x-data="{
-                     areaValid: true,
-                     cityValid: true,
-                     streetValid: true,
-                     nameValid: true,
-                     phoneValid: true,
-                     area: 'gg',
-                     city: 'gg',
-                     street: 'gg',
-                     name: 'gg',
-                     phone: '444444444444444',
+                     areaValid: false,
+                     cityValid: false,
+                     streetValid: false,
+                     nameValid: false,
+                     phoneValid: false,
+                     area: '',
+                     city: '',
+                     street: '',
+                     name: '',
+                     phone: '',
 
       }"
                 >
@@ -215,6 +214,7 @@
 
                     <button
                             @click.prevent="removeAllItemsFromCartAndSubmit()"
+{{--                            @click.prevent="approveOrder()"--}}
 
                             data-approve-url="{{ route('approve') }}"
 

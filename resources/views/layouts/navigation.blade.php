@@ -136,7 +136,7 @@
                         <li>
                             <a
                                     class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-lg  font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600"
-                                    href="#"
+                                    href="{{route('orders')}}"
                                     data-te-dropdown-item-ref
                             >@lang('main.my_orders')</a
                             >
@@ -442,7 +442,8 @@
                         <li>
                             <a
                                     class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-lg  font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600"
-                                    href="#"
+                                    href="{{ route('orders') }}"
+
                                     data-te-dropdown-item-ref
                             >@lang('main.my_orders')</a
                             >
@@ -530,8 +531,9 @@
             <ul>
                 <li class="mt-[-15px]">
                     <button class="ml-[160px]" @click="mobileMenuOpen = false">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                             stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
                         </svg>
                     </button>
                 </li>
@@ -720,7 +722,7 @@
                 {{-- <li class="mb-4">
                      <a
                              class="text-lg  text-neutral-500 transition duration-200 hover:text-neutral-700 hover:ease-in-out focus:text-neutral-700 disabled:text-black/30 motion-reduce:transition-none dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-zinc-400"
-                             href="#"
+                                   href="{{route('orders')}}"
                              data-te-dropdown-item-ref
                      >@lang('main.my_orders')</a
                      >
@@ -888,36 +890,36 @@
 
     <nav x-data="{ open: false }">
 
-        <button class=" mt-[15px] mr-[5px]  min-[525px]:hidden md:mt-2"   @click="open = !open, mobileMenuOpen = !mobileMenuOpen">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+        <button class=" mt-[15px] mr-[5px]  min-[525px]:hidden md:mt-2"
+                @click="open = !open, mobileMenuOpen = !mobileMenuOpen">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                 stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/>
             </svg>
 
 
         </button>
 
 
-{{--
-        <button class="mt-2 md:hidden text-gray-500 w-10 h-10 relative focus:outline-none bg-white"
-                @click="open = !open, mobileMenuOpen = !mobileMenuOpen">
-            <span class="sr-only">Open menu</span>
-            <div class="block w-5 absolute left-1/2 top-1/2   transform  -translate-x-1/2 -translate-y-1/2">
-                <span aria-hidden="true"
-                      class="block absolute h-0.5 w-5 bg-current transform transition duration-500 ease-in-out"
-                      :class="{'rotate-45': open,' -translate-y-1.5': !open }"></span>
-                <span aria-hidden="true"
-                      class="block absolute  h-0.5 w-5 bg-current   transform transition duration-500 ease-in-out"
-                      :class="{'opacity-0': open } "></span>
-                <span aria-hidden="true"
-                      class="block absolute  h-0.5 w-5 bg-current transform  transition duration-500 ease-in-out"
-                      :class="{'-rotate-45': open, ' translate-y-1.5': !open}"></span>
-            </div>
-        </button>--}}
+        {{--
+                <button class="mt-2 md:hidden text-gray-500 w-10 h-10 relative focus:outline-none bg-white"
+                        @click="open = !open, mobileMenuOpen = !mobileMenuOpen">
+                    <span class="sr-only">Open menu</span>
+                    <div class="block w-5 absolute left-1/2 top-1/2   transform  -translate-x-1/2 -translate-y-1/2">
+                        <span aria-hidden="true"
+                              class="block absolute h-0.5 w-5 bg-current transform transition duration-500 ease-in-out"
+                              :class="{'rotate-45': open,' -translate-y-1.5': !open }"></span>
+                        <span aria-hidden="true"
+                              class="block absolute  h-0.5 w-5 bg-current   transform transition duration-500 ease-in-out"
+                              :class="{'opacity-0': open } "></span>
+                        <span aria-hidden="true"
+                              class="block absolute  h-0.5 w-5 bg-current transform  transition duration-500 ease-in-out"
+                              :class="{'-rotate-45': open, ' translate-y-1.5': !open}"></span>
+                    </div>
+                </button>--}}
 
 
     </nav>
-
-
 
 
 </header>

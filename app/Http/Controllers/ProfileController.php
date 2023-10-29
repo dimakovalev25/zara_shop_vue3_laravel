@@ -40,8 +40,6 @@ class ProfileController extends Controller
     public function approve(OrderApproveRequest $request)
     {
         $data = $request->validated();
-        dd($data);
-
         return 'approve';
     }
 

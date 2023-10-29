@@ -13,12 +13,20 @@
 </head>
 <body>
 <div>
+
+    
     @include('layouts.navigation')
 {{--    <div class="flex flex-col min-h-screen max-[525px]:mt-[80px]">--}}
     <div class="flex flex-col min-h-screen max-[525px]:mt-[80px] max-[525px]:mt-[10px]">
         <main class="p-5 flex-grow ">
             {{ $slot  }}
         </main>
+{{--        <div>
+            <button>
+                --}}{{--            <a href="{{ route('sentConfirmEmail') }}">sentConfirmEmail</a>--}}{{--
+                <a class="rounded border-2 border-green-900" href="/send-email">sentConfirmEmail</a>
+            </button>
+        </div>--}}
     </div>
     <div
             x-data="toast"

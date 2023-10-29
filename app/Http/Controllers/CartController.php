@@ -3,16 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Http\Helpers\Cart;
+use App\Mail\ConfirmOrderMail;
 use App\Models\CartItem;
+use App\Models\Order;
 use App\Models\Product;
 use http\Client\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\Mail;
 
 class CartController extends Controller
 {
-
     public function checkout()
     {
 
@@ -30,7 +33,6 @@ class CartController extends Controller
 
         return view('cart.index', compact('cartItems', 'products', 'total'));
     }
-
     public function add(Request $request, Product $product)
     {
         $quantity = $request->post('quantity', 1);
@@ -77,7 +79,6 @@ class CartController extends Controller
             return response(['count' => Cart::getCountFromItems($cartItems)]);
         }
     }
-
     public function remove(Request $request, Product $product)
     {
         $user = $request->user();
@@ -103,11 +104,49 @@ class CartController extends Controller
             return response(['count' => Cart::getCountFromItems($cartItems)]);
         }
     }
-
     public function removeAllItemsFromCart(Request $request)
 
     {
+        $user = $request->user();
+        $data = Cart::getProductsAndCartItems()[1];
+        $user = Auth::user();
 
+        $products = [];
+
+        $fullPrice = 0;
+
+        foreach ($data as $productId => $item) {
+            $product = Product::find($productId);
+            $price = 0;
+            if ($product) {
+
+                $products[] = [
+                    'title' => $product->title,
+                    'quantity' => $item['quantity'],
+                    $price = $product->price,
+                ];
+
+                $fullPrice += $item['quantity'] * $price;
+            }
+        }
+        $orderData = [
+            'total_price' => $fullPrice,
+            'status' => 'new',
+            'created_by' => $user->id,
+            'updated_by' => $user->id,
+
+        ];
+
+        $order = Order::create($orderData);
+
+        Mail::to($user->email)->send(new ConfirmOrderMail($products, $fullPrice));
+        CartItem::where('user_id', $user->id)->delete();
+        return response(['message' => 'Order send']);
+    }
+
+/*    public function removeAllItemsFromCart(Request $request)
+
+    {
         $user = $request->user();
 
         if ($user) {
@@ -122,8 +161,7 @@ class CartController extends Controller
             return $response;
         }
         return response(['message' => 'All items have been removed from the cart.']);
-    }
-
+    }*/
     public function updateQuantity(Request $request, Product $product)
     {
         $quantity = (int)$request->post('quantity');
@@ -149,6 +187,32 @@ class CartController extends Controller
 
             return response(['count' => Cart::getCountFromItems($cartItems)]);
         }
+    }
+
+
+    public function approveOrder(Request $request)
+
+    {
+        $user = $request->user();
+        $data = Cart::getProductsAndCartItems()[1];
+        $user = Auth::user();
+
+        $products = [];
+
+        foreach ($data as $productId => $item) {
+            $product = Product::find($productId);
+
+            if ($product) {
+                $products[] = [
+                    'title' => $product->title,
+                    'quantity' => $item['quantity']
+                ];
+            }
+        }
+        Mail::to($user->email)->send(new ConfirmOrderMail($products));
+        CartItem::where('user_id', $user->id)->delete();
+        return response(['message' => 'Order send']);
+
     }
 
 }
